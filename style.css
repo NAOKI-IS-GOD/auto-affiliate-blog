@@ -191,6 +191,74 @@ nav a:hover {
   border-color: var(--primary);
 }
 
+/* ===== Rank Table (4位以下) ===== */
+.rank-table-wrap {
+  margin-top: 32px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+}
+.rank-table-title {
+  background: var(--secondary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 10px 20px;
+  letter-spacing: 0.05em;
+}
+.rank-table { display: flex; flex-direction: column; }
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-row:hover { background: #fef6f2; }
+.rank-row-num {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-light);
+  min-width: 28px;
+  text-align: center;
+}
+.rank-row-thumb { font-size: 1.5rem; flex-shrink: 0; }
+.rank-row-info { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.rank-row-name { font-size: 0.92rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rank-row-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag-sm {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #fff3ee;
+  color: var(--primary);
+  padding: 2px 8px;
+  border-radius: 50px;
+  border: 1px solid #ffd5c2;
+}
+.rank-row-score { font-size: 0.82rem; font-weight: 700; color: #f59e0b; white-space: nowrap; }
+.rank-row-price { font-size: 0.82rem; font-weight: 700; color: var(--text-light); white-space: nowrap; }
+.rank-row-arrow { font-size: 0.9rem; color: var(--primary); font-weight: 700; }
+.rank-table-more {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  border-top: 1.5px solid var(--border);
+}
+.rank-table-more:hover { background: #fff3ee; }
+@media (max-width: 600px) {
+  .rank-row-price { display: none; }
+  .rank-row { gap: 8px; padding: 12px 14px; }
+}
+
 /* ===== Section ===== */
 .section { padding: 64px 24px; }
 
