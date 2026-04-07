@@ -1,4 +1,4 @@
-import os
+import os, base64
 from urllib.parse import quote_plus
 
 OUTPUT_DIR = r"C:\Users\81804\OneDrive\デスクトップ\auto-affiliate-blog-main"
@@ -112,6 +112,125 @@ PRODUCTS = [
     {"slug":"review-boseqc45","name":"Bose QuietComfort 45","cat":"PC周辺機器","emoji":"🎧","price":"¥37,400","score":4.6,"bg":"#0a3622,#14532d","scores":[("ノイキャン",92,4.6),("装着感",96,4.8),("バッテリー",90,4.5),("音質",86,4.3),("コスパ",84,4.2)],"specs":[("ドライバー","40mm"),("ノイキャン","TriPort ANC"),("再生時間","22時間"),("充電","USB-C / 15分で3時間"),("重量","237g"),("コーデック","AAC / SBC")],"pros":["237gの軽量で長時間装着が快適","22時間の長バッテリー","15分急速充電で3時間再生","Bose特有の柔らかいANCが快適","折りたたみで収納コンパクト"],"cons":["ANC性能はWH-1000XM5に劣る","aptX非対応","Bluetoothのみ（有線は3.5mm）","XM5と比較すると音質でやや劣る"],"desc":"長時間着けても疲れない快適さが最大の強み。フライト・テレワーク・通勤で1日中装着しても苦にならない。","related":[("review-sonywh1000xm5","🎧","PC周辺機器","Sony WH-1000XM5 レビュー",4.8),("review-boseqcearbuds2","🎧","ワイヤレスイヤホン","Bose QC Earbuds II レビュー",4.6),("review-airpods-pro2","🎧","ワイヤレスイヤホン","AirPods Pro 2 レビュー",4.8)]},
 ]
 
+CAT_SVG_DECO = {
+    "スマートフォン": '''
+        <rect x="320" y="55" width="160" height="285" rx="24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="333" y="88" width="134" height="210" rx="8" fill="rgba(255,255,255,0.07)"/>
+        <rect x="368" y="328" width="64" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="400" cy="73" r="5" fill="rgba(255,255,255,0.25)"/>''',
+    "ワイヤレスイヤホン": '''
+        <ellipse cx="320" cy="135" rx="42" ry="58" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <ellipse cx="480" cy="135" rx="42" ry="58" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <path d="M362 195 Q400 230 438 195" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <rect x="345" y="218" width="110" height="46" rx="23" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>''',
+    "スマートウォッチ": '''
+        <rect x="338" y="52" width="124" height="166" rx="36" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="352" y="72" width="96" height="126" rx="22" fill="rgba(255,255,255,0.07)"/>
+        <rect x="356" y="28" width="22" height="28" rx="6" fill="rgba(255,255,255,0.2)"/>
+        <rect x="422" y="28" width="22" height="28" rx="6" fill="rgba(255,255,255,0.2)"/>
+        <rect x="356" y="218" width="88" height="22" rx="11" fill="rgba(255,255,255,0.15)"/>''',
+    "ノートPC": '''
+        <rect x="235" y="75" width="330" height="210" rx="14" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="249" y="90" width="302" height="180" rx="7" fill="rgba(255,255,255,0.07)"/>
+        <path d="M175 285 Q400 268 625 285" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="14" stroke-linecap="round"/>''',
+    "タブレット": '''
+        <rect x="255" y="50" width="290" height="195" rx="18" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="268" y="63" width="264" height="169" rx="9" fill="rgba(255,255,255,0.07)"/>
+        <circle cx="400" cy="262" r="13" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>''',
+    "カメラ": '''
+        <rect x="240" y="90" width="320" height="200" rx="22" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <circle cx="400" cy="190" r="70" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <circle cx="400" cy="190" r="44" fill="rgba(255,255,255,0.07)"/>
+        <circle cx="400" cy="190" r="18" fill="rgba(255,255,255,0.12)"/>
+        <rect x="290" y="75" width="62" height="20" rx="7" fill="rgba(255,255,255,0.2)"/>''',
+    "ゲーミング": '''
+        <rect x="255" y="90" width="290" height="175" rx="32" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <circle cx="338" cy="182" r="24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <circle cx="462" cy="160" r="11" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="483" cy="182" r="11" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="462" cy="204" r="11" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="441" cy="182" r="11" fill="rgba(255,255,255,0.15)"/>''',
+    "モニター": '''
+        <rect x="215" y="60" width="370" height="210" rx="14" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="228" y="73" width="344" height="184" rx="7" fill="rgba(255,255,255,0.07)"/>
+        <path d="M362 270 L438 270 L445 295 L355 295 Z" fill="rgba(255,255,255,0.15)"/>
+        <rect x="335" y="294" width="130" height="9" rx="4" fill="rgba(255,255,255,0.15)"/>''',
+    "PC周辺機器": '''
+        <rect x="265" y="125" width="270" height="95" rx="14" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="280" y="138" width="28" height="22" rx="5" fill="rgba(255,255,255,0.15)"/>
+        <rect x="316" y="138" width="22" height="22" rx="5" fill="rgba(255,255,255,0.15)"/>
+        <rect x="346" y="138" width="22" height="22" rx="5" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="472" cy="215" r="32" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+        <circle cx="472" cy="215" r="10" fill="rgba(255,255,255,0.15)"/>''',
+    "充電器": '''
+        <rect x="342" y="68" width="116" height="136" rx="20" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="373" y="204" width="18" height="52" rx="5" fill="rgba(255,255,255,0.22)"/>
+        <rect x="409" y="204" width="18" height="52" rx="5" fill="rgba(255,255,255,0.22)"/>
+        <circle cx="400" cy="136" r="22" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>''',
+    "モバイルバッテリー": '''
+        <rect x="298" y="100" width="204" height="105" rx="18" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="500" y="122" width="18" height="62" rx="7" fill="rgba(255,255,255,0.22)"/>
+        <rect x="316" y="118" width="52" height="70" rx="5" fill="rgba(255,255,255,0.2)"/>
+        <rect x="376" y="118" width="52" height="70" rx="5" fill="rgba(255,255,255,0.12)"/>
+        <rect x="436" y="118" width="52" height="70" rx="5" fill="rgba(255,255,255,0.06)"/>''',
+    "スマートスピーカー": '''
+        <ellipse cx="400" cy="175" rx="82" ry="115" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <line x1="328" y1="140" x2="472" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+        <line x1="323" y1="165" x2="477" y2="165" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+        <line x1="322" y1="190" x2="478" y2="190" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+        <line x1="328" y1="215" x2="472" y2="215" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>''',
+    "スピーカー": '''
+        <rect x="288" y="75" width="224" height="200" rx="22" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <circle cx="400" cy="165" r="68" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <circle cx="400" cy="165" r="42" fill="rgba(255,255,255,0.07)"/>
+        <circle cx="400" cy="165" r="16" fill="rgba(255,255,255,0.18)"/>''',
+    "VR/AR": '''
+        <path d="M235 175 Q235 128 278 128 L522 128 Q565 128 565 175 Q565 222 522 222 L278 222 Q235 222 235 175 Z" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <circle cx="338" cy="175" r="36" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <circle cx="462" cy="175" r="36" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <rect x="374" y="165" width="52" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>''',
+    "電子書籍リーダー": '''
+        <rect x="308" y="55" width="184" height="250" rx="14" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="322" y="75" width="156" height="190" rx="6" fill="rgba(255,255,255,0.07)"/>
+        <line x1="335" y1="115" x2="465" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <line x1="335" y1="140" x2="465" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <line x1="335" y1="165" x2="465" y2="165" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <line x1="335" y1="190" x2="430" y2="190" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>''',
+    "スマートホーム": '''
+        <path d="M400 68 L525 158 L525 275 L275 275 L275 158 Z" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <rect x="366" y="198" width="68" height="77" rx="9" fill="rgba(255,255,255,0.1)"/>
+        <rect x="290" y="186" width="62" height="52" rx="7" fill="rgba(255,255,255,0.1)"/>
+        <rect x="448" y="186" width="62" height="52" rx="7" fill="rgba(255,255,255,0.1)"/>''',
+    "エンタメ": '''
+        <rect x="268" y="100" width="264" height="160" rx="14" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <circle cx="344" cy="228" r="22" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <circle cx="456" cy="228" r="22" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+        <circle cx="400" cy="180" r="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <polygon points="392,170 416,180 392,190" fill="rgba(255,255,255,0.3)"/>''',
+    "家電": '''
+        <ellipse cx="400" cy="120" rx="95" ry="55" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <path d="M305 120 L305 230 Q305 260 400 260 Q495 260 495 230 L495 120" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <line x1="340" y1="155" x2="460" y2="155" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        <line x1="335" y1="185" x2="465" y2="185" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        <line x1="335" y1="215" x2="465" y2="215" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>''',
+}
+
+def make_hero_svg(p):
+    bg1, bg2 = [c.strip() for c in p["bg"].split(",")]
+    deco = CAT_SVG_DECO.get(p["cat"], "")
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="{bg1}"/>
+      <stop offset="100%" stop-color="{bg2}"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#g)"/>
+  {deco}
+</svg>'''
+    encoded = base64.b64encode(svg.encode("utf-8")).decode("ascii")
+    return f"data:image/svg+xml;base64,{encoded}"
+
 CAT_IMAGES = {
     "スマートフォン":      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
     "ワイヤレスイヤホン":  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
@@ -216,7 +335,7 @@ def generate_html(p):
     bg1, bg2 = p["bg"].split(",")
     amazon_url = f"https://www.amazon.co.jp/s?k={quote_plus(p['name'])}"
     rakuten_url = f"https://search.rakuten.co.jp/search/mall/{quote_plus(p['name'])}/"
-    img_url = CAT_IMAGES.get(p["cat"], "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80")
+    img_url = make_hero_svg(p)
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -322,11 +441,11 @@ def generate_html(p):
     </div>
 
     <div class="article-hero" style="background:linear-gradient(135deg,{bg1.strip()},{bg2.strip()});">
+      <img src="{img_url}" alt="{p['name']}" class="hero-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       <div class="hero-illust">
         <span class="hero-illust-emoji">{p["emoji"]}</span>
         <span class="hero-illust-cat">{p["cat"]}</span>
       </div>
-      <img src="{img_url}" alt="{p['name']}" class="hero-img" loading="lazy" onerror="this.style.display='none'">
     </div>
 
     <div class="score-box">
