@@ -263,13 +263,10 @@ REVIEW_STYLE = """
     .article-meta { display: flex; align-items: center; gap: 16px; font-size: 0.82rem; color: var(--text-light); flex-wrap: wrap; }
     .article-meta .author { display: flex; align-items: center; gap: 6px; font-weight: 600; color: var(--text); }
     .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
-    .article-hero { width: 100%; height: 300px; border-radius: var(--radius); margin-bottom: 32px; position: relative; overflow: hidden; }
-    .hero-illust { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-    .hero-illust::before { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.06); top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .hero-illust::after { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.08); top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .hero-illust-emoji { font-size: 5rem; line-height: 1; position: relative; z-index: 1; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4)); }
-    .hero-illust-cat { color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1; }
-    .hero-img { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+    .article-hero { width: 100%; height: 260px; border-radius: var(--radius); margin-bottom: 32px; display: flex; align-items: center; justify-content: center; }
+    .hero-illust { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+    .hero-illust-emoji { font-size: 6rem; line-height: 1; filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5)); }
+    .hero-illust-cat { color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
     .score-box { background: var(--secondary); color: var(--white); border-radius: var(--radius); padding: 28px; margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
     .total-score { text-align: center; }
     .score-number { font-size: 4rem; font-weight: 900; color: var(--accent); line-height: 1; }
@@ -335,7 +332,6 @@ def generate_html(p):
     bg1, bg2 = p["bg"].split(",")
     amazon_url = f"https://www.amazon.co.jp/s?k={quote_plus(p['name'])}"
     rakuten_url = f"https://search.rakuten.co.jp/search/mall/{quote_plus(p['name'])}/"
-    img_url = make_hero_svg(p)
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -441,7 +437,6 @@ def generate_html(p):
     </div>
 
     <div class="article-hero" style="background:linear-gradient(135deg,{bg1.strip()},{bg2.strip()});">
-      <img src="{img_url}" alt="{p['name']}" class="hero-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       <div class="hero-illust">
         <span class="hero-illust-emoji">{p["emoji"]}</span>
         <span class="hero-illust-cat">{p["cat"]}</span>
