@@ -191,6 +191,68 @@ nav a:hover {
   border-color: var(--primary);
 }
 
+/* ===== Sidebar Layout ===== */
+.with-sidebar {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 16px;
+  gap: 24px;
+}
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 112px;
+  max-height: calc(100vh - 128px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0 24px;
+}
+.sidebar-section { margin-bottom: 4px; }
+.sidebar-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 12px 6px;
+}
+.sidebar-list { list-style: none; margin: 0; padding: 0; }
+.sidebar-list li a {
+  display: block;
+  padding: 7px 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-list li a:hover {
+  background: #fff3ee;
+  color: var(--primary);
+}
+.main-content { flex: 1; min-width: 0; }
+.main-content .section { padding: 64px 0; }
+.main-content .container { max-width: 100%; }
+
+@media (max-width: 960px) {
+  .with-sidebar { padding: 0; }
+  .sidebar { display: none; }
+  .main-content .section { padding: 64px 24px; }
+}
+
 /* ===== Rank Table (4位以下) ===== */
 .rank-table-wrap {
   margin-top: 32px;
