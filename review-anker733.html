@@ -75,7 +75,13 @@
     .article-meta { display: flex; align-items: center; gap: 16px; font-size: 0.82rem; color: var(--text-light); flex-wrap: wrap; }
     .article-meta .author { display: flex; align-items: center; gap: 6px; font-weight: 600; color: var(--text); }
     .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
-    .article-hero { width: 100%; height: 300px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 6rem; margin-bottom: 32px; }
+    .article-hero { width: 100%; height: 300px; border-radius: var(--radius); margin-bottom: 32px; position: relative; overflow: hidden; }
+    .hero-illust { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .hero-illust::before { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.06); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .hero-illust::after { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.08); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .hero-illust-emoji { font-size: 5rem; line-height: 1; position: relative; z-index: 1; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4)); }
+    .hero-illust-cat { color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1; }
+    .hero-img { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
     .score-box { background: var(--secondary); color: var(--white); border-radius: var(--radius); padding: 28px; margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
     .total-score { text-align: center; }
     .score-number { font-size: 4rem; font-weight: 900; color: var(--accent); line-height: 1; }
@@ -153,8 +159,12 @@
       </div>
     </div>
 
-    <div class="article-hero" style="background:linear-gradient(135deg,#134e4a,#065f46); padding:0; overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80" alt="Anker 733 Power Bank（GaNPrime PowerCore 65W）" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" loading="lazy">
+    <div class="article-hero" style="background:linear-gradient(135deg,#134e4a,#065f46);">
+      <div class="hero-illust">
+        <span class="hero-illust-emoji">🔋</span>
+        <span class="hero-illust-cat">モバイルバッテリー</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80" alt="Anker 733 Power Bank（GaNPrime PowerCore 65W）" class="hero-img" loading="lazy" onerror="this.style.display='none'">
     </div>
 
     <div class="score-box">
