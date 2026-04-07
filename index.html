@@ -1316,6 +1316,26 @@
     el.style.transitionDelay = `${(i % 3) * 80}ms`;
     io.observe(el);
   });
+
+  // カード全体クリック対応
+  document.querySelectorAll('.rank-card').forEach(card => {
+    const link = card.querySelector('.btn-review-link');
+    if (link) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', e => {
+        if (!e.target.closest('a, button')) location.href = link.href;
+      });
+    }
+  });
+  document.querySelectorAll('.review-card').forEach(card => {
+    const link = card.querySelector('.read-link');
+    if (link) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', e => {
+        if (!e.target.closest('a, button')) location.href = link.href;
+      });
+    }
+  });
 </script>
 
 </body>

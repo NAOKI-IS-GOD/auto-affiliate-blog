@@ -541,6 +541,17 @@ def generate_html(p):
     </div>
   </div>
 </footer>
+<script>
+  document.querySelectorAll('.affiliate-box').forEach(box => {{
+    const link = box.querySelector('.btn-amazon');
+    if (link) {{
+      box.style.cursor = 'pointer';
+      box.addEventListener('click', e => {{
+        if (!e.target.closest('a, button')) window.open(link.href, '_blank', 'noopener');
+      }});
+    }}
+  }});
+</script>
 </body>
 </html>'''
 
