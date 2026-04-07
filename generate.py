@@ -592,3 +592,101 @@ sitemap += '</urlset>'
 with open(os.path.join(OUTPUT_DIR, 'sitemap.xml'), 'w', encoding='utf-8') as f:
     f.write(sitemap)
 print("sitemap.xml updated")
+
+# Generate HTML sitemap page
+cat_sections = ""
+for cat_name, prods in sorted(cat_map.items(), key=lambda x: -len(x[1])):
+    slug = CAT_SLUGS.get(cat_name, "cat-other")
+    links = "\n".join([f'        <li><a href="{p["slug"]}.html">{p["name"]}</a></li>' for p in prods])
+    cat_sections += f'''  <div class="sitemap-section">
+    <h2><a href="{slug}.html">{cat_name}（{len(prods)}件）</a></h2>
+    <ul>
+{links}
+    </ul>
+  </div>
+'''
+
+sitemap_page = f'''<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2054301472533985" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERDKSGNEWS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-ERDKSGNEWS');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>サイトマップ｜ガジェットナビ</title>
+  <meta name="description" content="ガジェットナビの全記事一覧です。カテゴリ別にご覧いただけます。">
+  <link rel="canonical" href="{BASE_URL}sitemap-page.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .sitemap-wrap {{ max-width: 900px; margin: 0 auto; padding: 48px 20px 80px; }}
+    .sitemap-wrap h1 {{ font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; }}
+    .sitemap-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }}
+    .sitemap-section h2 {{ font-size: 1rem; font-weight: 800; color: var(--white); background: var(--secondary); padding: 10px 16px; border-radius: var(--radius-sm) var(--radius-sm) 0 0; margin: 0; }}
+    .sitemap-section h2 a {{ color: var(--accent); }}
+    .sitemap-section ul {{ list-style: none; background: var(--white); border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius-sm) var(--radius-sm); padding: 12px 16px; margin: 0; }}
+    .sitemap-section li {{ border-bottom: 1px solid var(--border); }}
+    .sitemap-section li:last-child {{ border-bottom: none; }}
+    .sitemap-section li a {{ display: block; padding: 8px 0; font-size: 0.83rem; color: var(--text); transition: color 0.15s; }}
+    .sitemap-section li a:hover {{ color: var(--primary); }}
+    .sitemap-static {{ background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 32px; }}
+    .sitemap-static h2 {{ font-size: 1rem; font-weight: 800; margin-bottom: 10px; }}
+    .sitemap-static ul {{ list-style: none; display: flex; gap: 16px; flex-wrap: wrap; }}
+    .sitemap-static a {{ font-size: 0.88rem; color: var(--primary); }}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><a href="index.html" style="color:inherit;">📱 ガジェット<span class="logo-dot">ナビ</span></a></div>
+    <nav>
+      <a href="index.html#ranking">ランキング</a>
+      <a href="index.html#reviews">レビュー</a>
+      <a href="privacy.html">プライバシー</a>
+    </nav>
+  </div>
+</header>
+<div style="background:var(--bg); min-height:80vh;">
+  <div class="sitemap-wrap">
+    <h1>サイトマップ</h1>
+    <div class="sitemap-static">
+      <h2>サイト情報</h2>
+      <ul>
+        <li><a href="index.html">トップページ</a></li>
+        <li><a href="about.html">運営者情報</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-grid">
+{cat_sections}
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">⚠️ 当サイトはアフィリエイトプログラムに参加しています。</div>
+    <div class="footer-bottom">
+      <p>© 2026 ガジェットナビ All Rights Reserved.</p>
+      <p>
+        <a href="privacy.html" style="color:rgba(255,255,255,0.5);">プライバシーポリシー</a> ／
+        <a href="about.html" style="color:rgba(255,255,255,0.5);">運営者情報</a> ／
+        <a href="contact.html" style="color:rgba(255,255,255,0.5);">お問い合わせ</a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>'''
+
+with open(os.path.join(OUTPUT_DIR, 'sitemap-page.html'), 'w', encoding='utf-8') as f:
+    f.write(sitemap_page)
+print("sitemap-page.html generated")

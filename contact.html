@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2054301472533985" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERDKSGNEWS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ERDKSGNEWS');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>お問い合わせ｜ガジェットナビ</title>
+  <meta name="description" content="ガジェットナビへのお問い合わせはこちらから。">
+  <link rel="canonical" href="https://naoki-is-god.github.io/auto-affiliate-blog/contact.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .page-wrap { max-width: 640px; margin: 0 auto; padding: 48px 20px 80px; }
+    .page-wrap h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 32px; }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 0.92rem; font-family: inherit; background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--primary);
+    }
+    .form-group textarea { min-height: 160px; resize: vertical; }
+    .form-note { font-size: 0.8rem; color: var(--text-light); }
+    .btn-submit {
+      background: var(--primary); color: var(--white); border: none;
+      padding: 14px 40px; border-radius: 50px; font-size: 1rem; font-weight: 800;
+      cursor: pointer; transition: opacity 0.2s, transform 0.2s; align-self: flex-start;
+    }
+    .btn-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+    .notice-box { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px; font-size: 0.85rem; color: #1e40af; line-height: 1.7; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><a href="index.html" style="color:inherit;">📱 ガジェット<span class="logo-dot">ナビ</span></a></div>
+    <nav>
+      <a href="index.html#ranking">ランキング</a>
+      <a href="index.html#reviews">レビュー</a>
+      <a href="privacy.html">プライバシー</a>
+    </nav>
+  </div>
+</header>
+
+<div style="background:var(--bg); min-height:80vh;">
+  <div class="page-wrap">
+    <h1>お問い合わせ</h1>
+
+    <div class="notice-box">
+      📌 返信までに数日いただく場合があります。内容によってはご返答できない場合もございます。ご了承ください。
+    </div>
+
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <div class="form-group">
+        <label for="name">お名前 <span style="color:var(--primary);">*</span></label>
+        <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+      </div>
+      <div class="form-group">
+        <label for="email">メールアドレス <span style="color:var(--primary);">*</span></label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">お問い合わせ種別</label>
+        <select id="subject" name="subject">
+          <option value="content">記事内容について</option>
+          <option value="ad">広告・掲載について</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">メッセージ <span style="color:var(--primary);">*</span></label>
+        <textarea id="message" name="message" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+      </div>
+      <p class="form-note">送信前に<a href="privacy.html" style="color:var(--primary);">プライバシーポリシー</a>をご確認ください。</p>
+      <button type="submit" class="btn-submit">送信する →</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">⚠️ 当サイトはアフィリエイトプログラムに参加しています。記事内のリンクから商品を購入した場合、当サイトが報酬を受け取ることがあります。</div>
+    <div class="footer-bottom">
+      <p>© 2026 ガジェットナビ All Rights Reserved.</p>
+      <p>
+        <a href="privacy.html" style="color:rgba(255,255,255,0.5);">プライバシーポリシー</a> ／
+        <a href="about.html" style="color:rgba(255,255,255,0.5);">運営者情報</a> ／
+        <a href="contact.html" style="color:rgba(255,255,255,0.5);">お問い合わせ</a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
