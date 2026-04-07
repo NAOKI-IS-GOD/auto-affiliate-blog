@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naoki-is-god.github.io/auto-affiliate-blog/sitemap.xml
