@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://naoki-is-god.github.io/auto-affiliate-blog/$1",
+      "permanent": true
+    }
+  ]
+}
