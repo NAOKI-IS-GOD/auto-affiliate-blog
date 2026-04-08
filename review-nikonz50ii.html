@@ -34,13 +34,50 @@
     "itemReviewed": {
       "@type": "Product",
       "name": "Nikon Z50 II",
+      "description": "操作を楽しめる写真好きのためのAPS-Cミラーレス。13万円でNikonの光学技術とZマウントに入門できる。ダイヤル操作の楽しさはスマホカメラとは別次元。",
       "image": "https://auto-affiliate-blog-mauve.vercel.app/favicon.svg",
+      "brand": { "@type": "Brand", "name": "Nikon" },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
         "price": "129800",
         "availability": "https://schema.org/InStock",
-        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-nikonz50ii.html"
+        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-nikonz50ii.html",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "JPY"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",

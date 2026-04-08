@@ -34,13 +34,50 @@
     "itemReviewed": {
       "@type": "Product",
       "name": "LG OLED65C4 65インチ",
+      "description": "テレビ界の頂点LG OLED C4。映画・ゲーム・スポーツ全てが完璧な画質で楽しめる究極のリビングシアター。HDMI 2.1×4はゲーマーにとって夢のスペック。",
       "image": "https://auto-affiliate-blog-mauve.vercel.app/favicon.svg",
+      "brand": { "@type": "Brand", "name": "LG" },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
         "price": "269800",
         "availability": "https://schema.org/InStock",
-        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-lg-oled-c4.html"
+        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-lg-oled-c4.html",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "JPY"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",

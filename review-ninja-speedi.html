@@ -34,13 +34,50 @@
     "itemReviewed": {
       "@type": "Product",
       "name": "Ninja Speedi 急速調理器 ON400J",
+      "description": "忙しい現代人のための究極の時短調理家電。帰宅後15分でメイン＋副菜が同時完成。一人暮らし・共働き家庭で「料理時間ゼロ」を実現する魔法の調理器。",
       "image": "https://auto-affiliate-blog-mauve.vercel.app/favicon.svg",
+      "brand": { "@type": "Brand", "name": "Ninja" },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
         "price": "29800",
         "availability": "https://schema.org/InStock",
-        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-ninja-speedi.html"
+        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-ninja-speedi.html",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "JPY"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",

@@ -34,13 +34,50 @@
     "itemReviewed": {
       "@type": "Product",
       "name": "Hisense U8N 65インチ",
+      "description": "15万円で3000nitsというコスパが話題。輝度重視なら国産メーカーの2〜3倍の価値がある。ゲームや明るい部屋に最適。",
       "image": "https://auto-affiliate-blog-mauve.vercel.app/favicon.svg",
+      "brand": { "@type": "Brand", "name": "Hisense" },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
         "price": "150000",
         "availability": "https://schema.org/InStock",
-        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-hisenseu8n.html"
+        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-hisenseu8n.html",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "JPY"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",

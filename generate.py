@@ -568,6 +568,25 @@ def generate_html(p):
     cat_slug = CAT_SLUGS.get(p['cat'], "cat-other")
     amazon_url = f"https://www.amazon.co.jp/s?k={quote_plus(p['name'])}"
     rakuten_url = f"https://search.rakuten.co.jp/search/mall/{quote_plus(p['name'])}/"
+    _bm = {"iphone":"Apple","ipad":"Apple","airpods":"Apple","macbook":"Apple","apple":"Apple",
+        "galaxy":"Samsung","samsung":"Samsung","xperia":"Sony","playstation":"Sony",
+        "pixel":"Google","google":"Google","kindle":"Amazon","echo":"Amazon","amazon":"Amazon",
+        "sony":"Sony","logicool":"Logicool","bose":"Bose","anker":"Anker","dyson":"Dyson",
+        "jabra":"Jabra","razer":"Razer","asus":"ASUS","dell":"Dell","hp":"HP","lenovo":"Lenovo",
+        "lg":"LG","panasonic":"Panasonic","fujifilm":"Fujifilm","nikon":"Nikon","canon":"Canon",
+        "gopro":"GoPro","jbl":"JBL","marshall":"Marshall","steelseries":"SteelSeries",
+        "corsair":"Corsair","hyperx":"HyperX","garmin":"Garmin","elgato":"Elgato",
+        "blue":"Blue Microphones","caldigit":"CalDigit","benq":"BenQ","shokz":"Shokz",
+        "xiaomi":"Xiaomi","oppo":"OPPO","oneplus":"OnePlus","nothing":"Nothing",
+        "aquos":"Sharp","secretlab":"Secretlab","ninja":"Ninja","nespresso":"Nespresso",
+        "irobot":"iRobot","roomba":"iRobot","sonos":"Sonos","epson":"Epson",
+        "sennheiser":"Sennheiser","keychron":"Keychron","withings":"Withings",
+        "amazfit":"Amazfit","eufy":"Eufy","ecovacs":"Ecovacs","roborock":"Roborock",
+        "motorola":"Motorola","sharp":"Sharp","philips":"Philips","dji":"DJI",
+        "insta360":"Insta360","om":"OM SYSTEM","siroca":"siroca","melitta":"Melitta",
+    }
+    _nl = p["name"].lower().replace("-","").replace(" ","")
+    brand = next((v for k,v in _bm.items() if _nl.startswith(k)), p["name"].split()[0])
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -605,13 +624,50 @@ def generate_html(p):
     "itemReviewed": {{
       "@type": "Product",
       "name": "{p["name"]}",
+      "description": "{p["desc"]}",
       "image": "{BASE_URL}favicon.svg",
+      "brand": {{ "@type": "Brand", "name": "{brand}" }},
       "offers": {{
         "@type": "Offer",
         "priceCurrency": "JPY",
         "price": "{p["price"].replace('¥', '').replace(',', '')}",
         "availability": "https://schema.org/InStock",
-        "url": "{BASE_URL}{p["slug"]}.html"
+        "url": "{BASE_URL}{p["slug"]}.html",
+        "shippingDetails": {{
+          "@type": "OfferShippingDetails",
+          "shippingRate": {{
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "JPY"
+          }},
+          "shippingDestination": {{
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          }},
+          "deliveryTime": {{
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {{
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            }},
+            "transitTime": {{
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }}
+          }}
+        }},
+        "hasMerchantReturnPolicy": {{
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }}
       }},
       "aggregateRating": {{
         "@type": "AggregateRating",

@@ -34,13 +34,50 @@
     "itemReviewed": {
       "@type": "Product",
       "name": "OM SYSTEM OM-5 Mark II",
+      "description": "アウトドア・旅行カメラの最高峰。IP53防塵防滴でマイナス10℃まで動作し、7.5段手ブレ補正で激しい環境でも撮り逃しゼロ。山岳カメラマンの愛機。",
       "image": "https://auto-affiliate-blog-mauve.vercel.app/favicon.svg",
+      "brand": { "@type": "Brand", "name": "OM SYSTEM" },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
         "price": "119800",
         "availability": "https://schema.org/InStock",
-        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-omSystem-OM5.html"
+        "url": "https://auto-affiliate-blog-mauve.vercel.app/review-omSystem-OM5.html",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "JPY"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
