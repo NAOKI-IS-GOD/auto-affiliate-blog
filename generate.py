@@ -2,7 +2,7 @@ import os, base64
 from urllib.parse import quote_plus
 
 OUTPUT_DIR = r"C:\Users\81804\OneDrive\デスクトップ\auto-affiliate-blog-main"
-BASE_URL = "https://naoki-is-god.github.io/auto-affiliate-blog/"
+BASE_URL = "https://auto-affiliate-blog-mauve.vercel.app/"
 
 PRODUCTS = [
     # スマートフォン
@@ -562,9 +562,9 @@ def generate_html(p):
   <meta property="og:description" content="{p["desc"][:100]}">
   <meta property="og:url" content="{BASE_URL}{p["slug"]}.html">
   <meta property="og:site_name" content="ガジェットナビ">
-  <meta property="og:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
+  <meta property="og:image" content="https://auto-affiliate-blog-mauve.vercel.app/ogp-default.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
+  <meta name="twitter:image" content="https://auto-affiliate-blog-mauve.vercel.app/ogp-default.svg">
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -858,9 +858,9 @@ def generate_category_html(cat_name, products):
   <meta property="og:description" content="{cat_name}のおすすめ{len(products)}機種をまとめました。">
   <meta property="og:url" content="{BASE_URL}{slug}.html">
   <meta property="og:site_name" content="ガジェットナビ">
-  <meta property="og:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
+  <meta property="og:image" content="https://auto-affiliate-blog-mauve.vercel.app/ogp-default.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
+  <meta name="twitter:image" content="https://auto-affiliate-blog-mauve.vercel.app/ogp-default.svg">
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
