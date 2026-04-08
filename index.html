@@ -92,11 +92,47 @@
 <header>
   <div class="header-inner">
     <div class="logo">📱 ガジェット<span class="logo-dot">ナビ</span></div>
-    <nav>
+    <nav id="main-nav">
       <a href="#ranking">ランキング</a>
       <a href="#reviews">レビュー</a>
       <a href="#features">このサイトは</a>
       <a href="privacy.html">プライバシー</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile drawer nav -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <nav class="mobile-nav">
+      <a href="#ranking" class="mobile-nav-link">🏆 ランキング</a>
+      <a href="#reviews" class="mobile-nav-link">📝 レビュー</a>
+      <div class="mobile-nav-sep">📋 カテゴリ</div>
+      <a href="cat-smartphone.html" class="mobile-nav-link">📱 スマートフォン</a>
+      <a href="cat-earphone.html" class="mobile-nav-link">🎧 イヤホン</a>
+      <a href="cat-laptop.html" class="mobile-nav-link">💻 ノートPC</a>
+      <a href="cat-smartwatch.html" class="mobile-nav-link">⌚ スマートウォッチ</a>
+      <a href="cat-tablet.html" class="mobile-nav-link">📟 タブレット</a>
+      <a href="cat-camera.html" class="mobile-nav-link">📷 カメラ</a>
+      <a href="cat-gaming.html" class="mobile-nav-link">🎮 ゲーミング</a>
+      <a href="cat-tv.html" class="mobile-nav-link">📺 テレビ</a>
+      <a href="cat-monitor.html" class="mobile-nav-link">🖥️ モニター</a>
+      <div class="mobile-nav-sep">🏠 家電</div>
+      <a href="cat-robotvacuum.html" class="mobile-nav-link">🤖 ロボット掃除機</a>
+      <a href="cat-cooking.html" class="mobile-nav-link">🍳 調理家電</a>
+      <a href="cat-dryer.html" class="mobile-nav-link">💨 ドライヤー</a>
+      <a href="cat-coffee.html" class="mobile-nav-link">☕ コーヒーメーカー</a>
+      <a href="cat-soundbar.html" class="mobile-nav-link">🔊 サウンドバー</a>
+      <a href="cat-projector.html" class="mobile-nav-link">📽️ プロジェクター</a>
+      <a href="cat-network.html" class="mobile-nav-link">📡 ネットワーク機器</a>
+      <a href="cat-gamingchair.html" class="mobile-nav-link">🪑 ゲーミングチェア</a>
+      <a href="cat-cordlessvacuum.html" class="mobile-nav-link">🧹 コードレス掃除機</a>
+      <a href="cat-peripherals.html" class="mobile-nav-link">🖱️ PC周辺機器</a>
+      <a href="cat-smarthome.html" class="mobile-nav-link">💡 スマートホーム</a>
+      <div class="mobile-nav-sep">🔗 サイト情報</div>
+      <a href="sitemap-page.html" class="mobile-nav-link">📋 全記事一覧</a>
+      <a href="about.html" class="mobile-nav-link">ℹ️ 運営者情報</a>
+      <a href="contact.html" class="mobile-nav-link">✉️ お問い合わせ</a>
     </nav>
   </div>
 </header>
@@ -1405,6 +1441,27 @@
         if (!e.target.closest('a, button')) location.href = link.href;
       });
     }
+  });
+</script>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('is-open');
+    drawer.classList.toggle('is-open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  // Close on link click
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('is-open');
+      drawer.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
   });
 </script>
 
