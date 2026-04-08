@@ -118,7 +118,26 @@
     .cta-bottom { background: linear-gradient(135deg, var(--secondary), #0f3460); color: var(--white); border-radius: var(--radius); padding: 32px; text-align: center; margin-top: 48px; }
     .cta-bottom h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
     .cta-bottom p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
-    @media (max-width: 600px) { .score-box { grid-template-columns: 1fr; } .pros-cons { grid-template-columns: 1fr; } }
+    .back-to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--primary); color:#fff; border:none; font-size:1.1rem; font-weight:700; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s, transform 0.2s; z-index:999; box-shadow:0 4px 16px rgba(240,90,40,0.4); }
+    .back-to-top.visible { opacity:1; pointer-events:auto; }
+    .back-to-top:hover { transform:translateY(-3px); }
+    @media (max-width: 768px) {
+      .review-page { padding: 24px 16px 60px; }
+      .article-header h1 { font-size: 1.3rem; }
+      .article-hero { height: 180px; }
+      .hero-illust-emoji { font-size: 4rem; }
+      .score-box { grid-template-columns: 1fr; gap: 16px; padding: 20px 16px; }
+      .score-number { font-size: 3rem; }
+      .pros-cons { grid-template-columns: 1fr; }
+      .spec-table th { width: 40%; font-size: 0.82rem; }
+      .spec-table td { font-size: 0.82rem; }
+      .spec-table th, .spec-table td { padding: 10px 12px; }
+      .affiliate-box { padding: 18px 14px; }
+      .affiliate-btns { flex-direction: column; }
+      .btn-amazon, .btn-rakuten { justify-content: center; padding: 13px 20px; }
+      .article-body h2 { font-size: 1.1rem; }
+      .cta-bottom { padding: 24px 16px; }
+    }
 </style>
 </head>
 <body>
@@ -137,7 +156,7 @@
   <div class="review-page" style="padding:0;">
     <div class="breadcrumb">
       <a href="index.html">トップ</a><span>›</span>
-      <a href="index.html#reviews">サウンドバー</a><span>›</span>
+      <a href="cat-soundbar.html">サウンドバー</a><span>›</span>
       Bose Smart Soundbar 900 レビュー
     </div>
   </div>
@@ -302,6 +321,8 @@
   </div>
 </div>
 
+<button class="back-to-top" id="backToTop" aria-label="トップへ戻る">↑</button>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-disclaimer">
@@ -314,6 +335,11 @@
   </div>
 </footer>
 <script>
+  // Back to Top
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { btn.classList.toggle('visible', window.scrollY > 400); });
+  btn.addEventListener('click', () => { window.scrollTo({top:0,behavior:'smooth'}); });
+
   document.querySelectorAll('.affiliate-box').forEach(box => {
     const link = box.querySelector('.btn-amazon');
     if (link) {

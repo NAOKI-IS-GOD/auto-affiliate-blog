@@ -323,7 +323,17 @@
       <p>スペック・特徴・評判をまとめてお届けします</p>
     </div>
 
-    <div class="reviews-grid">
+    <!-- Search box -->
+    <div class="search-wrap">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="製品名・カテゴリで検索...（例：iPhone、イヤホン）" autocomplete="off">
+        <button class="search-clear" id="searchClear" aria-label="クリア">✕</button>
+      </div>
+      <div class="search-count" id="searchCount"></div>
+    </div>
+
+    <div class="reviews-grid" id="reviewsGrid">
 
       <!-- ===== スマートフォン ===== -->
       <article class="review-card">
@@ -1444,7 +1454,39 @@
   });
 </script>
 
+<button class="back-to-top" id="backToTop" aria-label="トップへ戻る">↑</button>
+
 <script>
+  // Back to Top
+  const bttBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { bttBtn.classList.toggle('visible', window.scrollY > 400); });
+  bttBtn.addEventListener('click', () => { window.scrollTo({top:0,behavior:'smooth'}); });
+
+  // Search
+  const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
+  const searchCount = document.getElementById('searchCount');
+  const grid = document.getElementById('reviewsGrid');
+  const allCards = Array.from(grid.querySelectorAll('.review-card'));
+  const totalCount = allCards.length;
+
+  function doSearch(q) {
+    const kw = q.trim().toLowerCase();
+    searchClear.style.display = kw ? 'block' : 'none';
+    let shown = 0;
+    allCards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const match = !kw || text.includes(kw);
+      card.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    searchCount.textContent = kw ? `${shown} 件ヒット` : '';
+    searchCount.style.display = kw ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', e => doSearch(e.target.value));
+  searchClear.addEventListener('click', () => { searchInput.value = ''; doSearch(''); searchInput.focus(); });
+
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('mobile-drawer');
