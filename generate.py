@@ -1025,6 +1025,7 @@ sitemap_urls = [
     ("privacy.html", "2026-04-01", "yearly", "0.3"),
     ("about.html", "2026-04-07", "yearly", "0.3"),
     ("contact.html", "2026-04-07", "yearly", "0.2"),
+    ("faq.html", today, "monthly", "0.6"),
     ("sitemap-page.html", today, "weekly", "0.5"),
 ]
 for cat_name in cat_map:
