@@ -664,6 +664,10 @@ def generate_html(p):
     gtag('js', new Date());
     gtag('config', 'G-ERDKSGNEWS');
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -773,6 +777,15 @@ def generate_html(p):
 
     </div>
 
+    <!-- AdSense: 記事内広告 -->
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center; margin:32px 0;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-2054301472533985"
+         data-ad-slot="AUTO"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+
     <div class="affiliate-box" style="margin-top:40px;">
       <div class="prod-name">{p["emoji"]} {p["name"]}</div>
       <div class="prod-price">{p["price"]}〜</div>
@@ -807,7 +820,11 @@ def generate_html(p):
     </div>
     <div class="footer-bottom">
       <p>© 2026 ガジェットナビ All Rights Reserved.</p>
-      <p><a href="privacy.html" style="color:rgba(255,255,255,0.5);">プライバシーポリシー</a></p>
+      <p>
+        <a href="privacy.html" style="color:rgba(255,255,255,0.5);">プライバシーポリシー</a> ／
+        <a href="faq.html" style="color:rgba(255,255,255,0.5);">よくある質問</a> ／
+        <a href="contact.html" style="color:rgba(255,255,255,0.5);">お問い合わせ</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -925,6 +942,10 @@ def generate_category_html(cat_name, products):
     ]
   }}
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -980,7 +1001,11 @@ def generate_category_html(cat_name, products):
     <div class="footer-disclaimer">⚠️ 当サイトはアフィリエイトプログラムに参加しています。記事内のリンクから商品を購入した場合、当サイトが報酬を受け取ることがあります。</div>
     <div class="footer-bottom">
       <p>© 2026 ガジェットナビ All Rights Reserved.</p>
-      <p><a href="privacy.html" style="color:rgba(255,255,255,0.5);">プライバシーポリシー</a></p>
+      <p>
+        <a href="privacy.html" style="color:rgba(255,255,255,0.5);">プライバシーポリシー</a> ／
+        <a href="faq.html" style="color:rgba(255,255,255,0.5);">よくある質問</a> ／
+        <a href="contact.html" style="color:rgba(255,255,255,0.5);">お問い合わせ</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -1079,6 +1104,10 @@ sitemap_page = f'''<!DOCTYPE html>
   <title>サイトマップ｜ガジェットナビ</title>
   <meta name="description" content="ガジェットナビの全記事一覧です。カテゴリ別にご覧いただけます。">
   <link rel="canonical" href="{BASE_URL}sitemap-page.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
