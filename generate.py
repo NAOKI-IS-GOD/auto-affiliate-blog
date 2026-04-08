@@ -534,6 +534,8 @@ def generate_html(p):
     specs_html = "\n".join([f'        <tr><th>{k}</th><td>{v}</td></tr>' for k, v in p["specs"]])
     pros_html = "\n".join([f"            <li>{x}</li>" for x in p["pros"]])
     cons_html = "\n".join([f"            <li>{x}</li>" for x in p["cons"]])
+    pros_faq = "、".join(p["pros"][:3])
+    cons_faq = "、".join(p["cons"][:2])
     related_html = "\n".join([
         f'''        <a href="{slug}.html" class="related-card">
           <div class="related-thumb">{emoji}</div>
@@ -610,6 +612,46 @@ def generate_html(p):
       {{ "@type": "ListItem", "position": 1, "name": "トップ", "item": "{BASE_URL}" }},
       {{ "@type": "ListItem", "position": 2, "name": "{p["cat"]}", "item": "{BASE_URL}{cat_slug}.html" }},
       {{ "@type": "ListItem", "position": 3, "name": "{p["name"]} レビュー" }}
+    ]
+  }}
+  </script>
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {{
+        "@type": "Question",
+        "name": "{p["name"]}の良い点は？",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "{pros_faq}"
+        }}
+      }},
+      {{
+        "@type": "Question",
+        "name": "{p["name"]}の気になる点は？",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "{cons_faq}"
+        }}
+      }},
+      {{
+        "@type": "Question",
+        "name": "{p["name"]}の価格は？",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "{p["name"]}の価格は{p["price"]}〜（税込）です。最新価格はAmazonや楽天でご確認ください。"
+        }}
+      }},
+      {{
+        "@type": "Question",
+        "name": "{p["name"]}は買う価値がある？",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "ガジェットナビ編集部の総合評価は{p["score"]}/5.0点です。{p["desc"]}"
+        }}
+      }}
     ]
   }}
   </script>
@@ -924,6 +966,9 @@ def generate_category_html(cat_name, products):
     <div class="cat-hero">
       <h1>{cat_name} おすすめランキング【2026年版】</h1>
       <p>全{len(products)}機種のスペック・特徴・評判をまとめました</p>
+    </div>
+    <div style="background:var(--white);border-radius:var(--radius);padding:24px 28px;margin-bottom:32px;border:1px solid var(--border);line-height:1.85;font-size:0.93rem;color:#444;">
+      <p>このページでは<strong>{cat_name}</strong>のおすすめ製品を{len(products)}機種まとめています。各製品のスペック・特徴・価格・評判を専門家が詳しくレビュー。予算や用途に合わせた最適な{cat_name}選びの参考にお役立てください。気になる製品名をクリックすると詳細レビューページへ移動します。</p>
     </div>
     <div class="cat-grid">
 {cards_html}
