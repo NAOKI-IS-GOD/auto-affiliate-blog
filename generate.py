@@ -562,7 +562,9 @@ def generate_html(p):
   <meta property="og:description" content="{p["desc"][:100]}">
   <meta property="og:url" content="{BASE_URL}{p["slug"]}.html">
   <meta property="og:site_name" content="ガジェットナビ">
+  <meta property="og:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -581,10 +583,20 @@ def generate_html(p):
     "itemReviewed": {{
       "@type": "Product",
       "name": "{p["name"]}",
+      "image": "{BASE_URL}favicon.svg",
       "offers": {{
         "@type": "Offer",
         "priceCurrency": "JPY",
-        "availability": "https://schema.org/InStock"
+        "price": "{p["price"].replace('¥', '').replace(',', '')}",
+        "availability": "https://schema.org/InStock",
+        "url": "{BASE_URL}{p["slug"]}.html"
+      }},
+      "aggregateRating": {{
+        "@type": "AggregateRating",
+        "ratingValue": "{p["score"]}",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "1"
       }}
     }},
     "publisher": {{ "@type": "Organization", "name": "ガジェットナビ", "url": "{BASE_URL}" }}
@@ -596,7 +608,7 @@ def generate_html(p):
     "@type": "BreadcrumbList",
     "itemListElement": [
       {{ "@type": "ListItem", "position": 1, "name": "トップ", "item": "{BASE_URL}" }},
-      {{ "@type": "ListItem", "position": 2, "name": "{p["cat"]}", "item": "{BASE_URL}" }},
+      {{ "@type": "ListItem", "position": 2, "name": "{p["cat"]}", "item": "{BASE_URL}{cat_slug}.html" }},
       {{ "@type": "ListItem", "position": 3, "name": "{p["name"]} レビュー" }}
     ]
   }}
@@ -846,6 +858,31 @@ def generate_category_html(cat_name, products):
   <meta property="og:description" content="{cat_name}のおすすめ{len(products)}機種をまとめました。">
   <meta property="og:url" content="{BASE_URL}{slug}.html">
   <meta property="og:site_name" content="ガジェットナビ">
+  <meta property="og:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://naoki-is-god.github.io/auto-affiliate-blog/ogp-default.png">
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "{cat_name}おすすめランキング【2026年版】",
+    "description": "{cat_name}のおすすめ製品{len(products)}機種を比較まとめ",
+    "numberOfItems": {len(products)},
+    "itemListElement": [
+{chr(10).join(['      {"@type":"ListItem","position":'+str(i+1)+',"name":"'+p['name']+'","url":"'+BASE_URL+p['slug']+'.html"}' for i,p in enumerate(products[:10])])}
+    ]
+  }}
+  </script>
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {{"@type":"ListItem","position":1,"name":"トップ","item":"{BASE_URL}"}},
+      {{"@type":"ListItem","position":2,"name":"{cat_name}"}}
+    ]
+  }}
+  </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -936,15 +973,20 @@ for cat_name, prods in cat_map.items():
 print(f"Category pages: {cat_count}")
 
 # Generate updated sitemap
+import datetime
+today = datetime.date.today().isoformat()
 sitemap_urls = [
-    ("", "2026-04-07", "weekly", "1.0"),
+    ("", today, "weekly", "1.0"),
     ("privacy.html", "2026-04-01", "yearly", "0.3"),
+    ("about.html", "2026-04-07", "yearly", "0.3"),
+    ("contact.html", "2026-04-07", "yearly", "0.2"),
+    ("sitemap-page.html", today, "weekly", "0.5"),
 ]
 for cat_name in cat_map:
     slug = CAT_SLUGS.get(cat_name, "cat-other")
-    sitemap_urls.append((f"{slug}.html", "2026-04-07", "weekly", "0.9"))
+    sitemap_urls.append((f"{slug}.html", today, "weekly", "0.9"))
 for p in PRODUCTS:
-    sitemap_urls.append((f"{p['slug']}.html", "2026-04-07", "monthly", "0.8"))
+    sitemap_urls.append((f"{p['slug']}.html", today, "monthly", "0.8"))
 
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 for path, lastmod, freq, pri in sitemap_urls:
