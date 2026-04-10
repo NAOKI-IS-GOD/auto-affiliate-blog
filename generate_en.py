@@ -218,13 +218,13 @@ def generate_en_review(p):
 
     score_items_html = "\n".join([
         f'''        <div class="score-item">
-          <span class="score-item-label">{get_en_score_label(label)}</span>
+          <span class="score-item-label">{t(label) if t(label) != label else get_en_score_label(label)}</span>
           <div class="score-bar-wrap"><div class="score-bar" style="width:{w}%;"></div></div>
           <span class="score-item-val">{val}</span>
         </div>''' for label, w, val in p['scores']
     ])
     specs_html = "\n".join([
-        f'        <tr><th>{get_en_spec_key(k)}</th><td>{v}</td></tr>'
+        f'        <tr><th>{get_en_spec_key(k)}</th><td>{t(v)}</td></tr>'
         for k, v in p['specs']
     ])
     # Use translated pros/cons
@@ -518,7 +518,7 @@ def generate_en_category(cat_name, products):
           <div class="cat-card-name">{p['name']}</div>
           <div class="cat-card-score">★ {p['score']} / 5.0</div>
           <div class="cat-card-price">From {p['price']}</div>
-          <div class="cat-card-desc">{p['desc'][:60]}…</div>
+          <div class="cat-card-desc">{t(p['desc'])[:80]}…</div>
         </div>
       </a>''' for p in products])
 

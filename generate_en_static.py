@@ -13,6 +13,11 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), 'en')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 from collections import defaultdict
+import json
+
+_tr_path = os.path.join(os.path.dirname(__file__), 'translations_en.json')
+TR = json.load(open(_tr_path, encoding='utf-8')) if os.path.exists(_tr_path) else {}
+def t(text): return TR.get(text, text)
 
 CAT_EN = {
     "スマートフォン": "Smartphones", "PC周辺機器": "PC Peripherals",

@@ -54,6 +54,14 @@ for i, p in enumerate(PRODUCTS):
     for con in p['cons']:
         translate(con)
 
+    # score labels
+    for label, w, val in p['scores']:
+        translate(label)
+
+    # spec values
+    for k, v in p['specs']:
+        translate(v)
+
     # Save after each product
     with open(CACHE_FILE, 'w', encoding='utf-8') as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
