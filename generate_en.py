@@ -12,6 +12,7 @@ exec(open(_gen_path, encoding='utf-8').read(), _ns)
 PRODUCTS = _ns['PRODUCTS']
 CAT_SLUGS = _ns['CAT_SLUGS']
 BASE_URL = _ns['BASE_URL']
+REVIEW_STYLE = _ns['REVIEW_STYLE']
 
 from urllib.parse import quote_plus
 from collections import defaultdict
@@ -122,57 +123,8 @@ SPEC_EN = {
     "メモリ": "Memory", "インターフェイス": "Interface",
 }
 
-EN_REVIEW_STYLE = """
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
-    .review-page { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
-    .breadcrumb { font-size: 0.8rem; color: var(--text-light); margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
-    .breadcrumb a { color: var(--primary); text-decoration: none; }
-    .article-header { margin-bottom: 32px; }
-    .article-category { display: inline-block; background: var(--primary); color: #fff; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; }
-    .article-header h1 { font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 900; line-height: 1.35; color: var(--text); }
-    .article-meta { display: flex; align-items: center; gap: 16px; margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
-    .author { display: flex; align-items: center; gap: 6px; }
-    .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
-    .article-hero { height: 220px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 32px; overflow: hidden; position: relative; }
-    .hero-illust { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .hero-illust-emoji { font-size: 5.5rem; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); }
-    .hero-illust-cat { color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-    .score-box { background: var(--white); border-radius: var(--radius); padding: 28px; margin-bottom: 32px; display: grid; grid-template-columns: 180px 1fr; gap: 24px; box-shadow: var(--shadow-sm); }
-    .total-score { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .score-number { font-size: 4rem; font-weight: 900; color: var(--primary); line-height: 1; }
-    .score-label { font-size: 0.78rem; color: var(--text-muted); }
-    .score-breakdown { display: flex; flex-direction: column; gap: 10px; }
-    .score-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; }
-    .score-item-label { width: 130px; flex-shrink: 0; color: var(--text-muted); }
-    .score-bar-wrap { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
-    .score-bar { height: 100%; background: linear-gradient(90deg, var(--primary), #ff8c42); border-radius: 4px; transition: width 0.6s; }
-    .score-item-val { width: 32px; text-align: right; font-weight: 700; color: var(--primary); }
-    .affiliate-box { background: #fff8f0; border: 2px solid var(--primary); border-radius: var(--radius); padding: 24px; margin: 32px 0; text-align: center; }
-    .affiliate-box .prod-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-    .affiliate-box .prod-price { font-size: 1.5rem; font-weight: 900; color: var(--primary); margin-bottom: 16px; }
-    .affiliate-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-amazon { display: inline-flex; align-items: center; gap: 8px; background: #ff9900; color: #fff; padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; transition: opacity 0.2s, transform 0.2s; text-decoration: none; }
-    .btn-amazon:hover { opacity: 0.85; transform: translateY(-1px); }
-    .btn-rakuten { display: inline-flex; align-items: center; gap: 8px; background: #bf0000; color: #fff; padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; transition: opacity 0.2s, transform 0.2s; text-decoration: none; }
-    .btn-rakuten:hover { opacity: 0.85; transform: translateY(-1px); }
-    .article-body h2 { font-size: 1.3rem; font-weight: 800; margin: 40px 0 14px; padding-left: 14px; border-left: 4px solid var(--primary); }
-    .article-body h3 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 10px; }
-    .article-body p { font-size: 0.95rem; line-height: 1.85; margin-bottom: 18px; color: #444; }
-    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
-    .pros, .cons { border-radius: var(--radius); padding: 20px; }
-    .pros { background: #f0fff4; border: 1px solid #68d391; }
-    .cons { background: #fff5f5; border: 1px solid #fc8181; }
-    .pros h4 { color: #276749; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; }
-    .cons h4 { color: #9b2335; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; }
-    .pros li, .cons li { font-size: 0.85rem; line-height: 1.7; list-style: none; }
-    .pros li::before { content: "✅ "; }
-    .cons li::before { content: "❌ "; }
-    .spec-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.88rem; }
-    .spec-table th, .spec-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
-    .spec-table th { background: var(--secondary); color: var(--white); font-weight: 700; width: 35%; }
-    .spec-table tr:nth-child(even) td { background: #f9f9f9; }
-    .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin: 24px 0; font-size: 0.88rem; color: #1e40af; line-height: 1.7; }
+EN_EXTRA_STYLE = """
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; }
     .related-articles { margin-top: 48px; }
     .related-articles h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; }
     .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -183,17 +135,9 @@ EN_REVIEW_STYLE = """
     .related-title { font-size: 0.82rem; font-weight: 700; color: var(--text); line-height: 1.4; }
     .related-score { font-size: 0.8rem; color: var(--primary); font-weight: 700; }
     .related-score span { color: #f59e0b; }
-    .cta-bottom { background: linear-gradient(135deg, var(--secondary), #0f3460); color: var(--white); border-radius: var(--radius); padding: 32px; text-align: center; margin-top: 48px; }
-    .cta-bottom h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
-    .cta-bottom p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
     .btn-affiliate { display: inline-block; padding: 12px 28px; background: var(--primary); color: #fff; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
-    .back-to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--primary); color:#fff; border:none; font-size:1.1rem; font-weight:700; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.2s, transform 0.2s; z-index:999; }
-    .back-to-top.visible { opacity:1; pointer-events:auto; }
     @media (max-width: 768px) {
-      .score-box { grid-template-columns: 1fr; }
-      .pros-cons { grid-template-columns: 1fr; }
       .related-grid { grid-template-columns: 1fr; }
-      .affiliate-btns { flex-direction: column; }
     }
 """
 
@@ -417,7 +361,7 @@ def generate_en_review(p):
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <style>{EN_REVIEW_STYLE}</style>
+  <style>{REVIEW_STYLE}{EN_EXTRA_STYLE}</style>
 </head>
 <body>
 {EN_HEADER}
