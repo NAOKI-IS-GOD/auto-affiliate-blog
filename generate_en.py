@@ -16,7 +16,15 @@ REVIEW_STYLE = _ns['REVIEW_STYLE']
 
 from urllib.parse import quote_plus
 from collections import defaultdict
-import datetime
+import datetime, json
+
+# Load translations
+_tr_path = os.path.join(os.path.dirname(__file__), 'translations_en.json')
+TR = json.load(open(_tr_path, encoding='utf-8')) if os.path.exists(_tr_path) else {}
+
+def t(text):
+    """Return English translation, fallback to original."""
+    return TR.get(text, text)
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), 'en')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -219,13 +227,9 @@ def generate_en_review(p):
         f'        <tr><th>{get_en_spec_key(k)}</th><td>{v}</td></tr>'
         for k, v in p['specs']
     ])
-    # Generate English pros/cons from score data
-    sorted_scores = sorted(p['scores'], key=lambda x: x[2], reverse=True)
-    en_pros = [f"Excellent {get_en_score_label(label)} ({val}/5.0)" for label, w, val in sorted_scores[:3]]
-    en_pros += [f"Compact and well-built design", f"Competitive price for the performance"]
-    en_cons_raw = sorted(p['scores'], key=lambda x: x[2])
-    en_cons = [f"Lower {get_en_score_label(label)} compared to rivals ({val}/5.0)" for label, w, val in en_cons_raw[:2]]
-    en_cons += [f"Premium price may not suit all budgets"]
+    # Use translated pros/cons
+    en_pros = [t(x) for x in p['pros']]
+    en_cons = [t(x) for x in p['cons']]
 
     pros_html = "\n".join([f"            <li>{x}</li>" for x in en_pros])
     cons_html = "\n".join([f"            <li>{x}</li>" for x in en_cons])
@@ -238,12 +242,13 @@ def generate_en_review(p):
         </a>''' for slug, emoji, cat, title, score in p['related']
     ])
 
-    # Auto-generate English description from product data
+    # Use translated description, fallback to auto-generated
+    en_desc_translated = t(p['desc'])
     top_score = max(p['scores'], key=lambda x: x[2])
-    en_desc = (f"The {p['name']} is a top-rated {cat_en} from {brand}, "
-               f"scoring {p['score']}/5.0 in our expert review. "
-               f"Particularly outstanding in {get_en_score_label(top_score[0])} ({top_score[2]}/5.0). "
-               f"Available to purchase on Amazon Japan.")
+    en_desc_auto = (f"The {p['name']} is a top-rated {cat_en} from {brand}, "
+                    f"scoring {p['score']}/5.0. "
+                    f"Particularly outstanding in {get_en_score_label(top_score[0])} ({top_score[2]}/5.0).")
+    en_desc = en_desc_translated if en_desc_translated != p['desc'] else en_desc_auto
 
     pros_faq = ", ".join(en_pros[:3])
     cons_faq = ", ".join(en_cons[:2])

@@ -1,0 +1,402 @@
+Generated: review-iphone16promax.html
+Generated: review-iphone16plus.html
+Generated: review-iphone16.html
+Generated: review-iphonese4.html
+Generated: review-pixel9a.html
+Generated: review-pixel8a.html
+Generated: review-xperia1vi.html
+Generated: review-xiaomi14ultra.html
+Generated: review-oppofindx8pro.html
+Generated: review-aquosr9.html
+Generated: review-oneplus13.html
+Generated: review-nothingphone3a.html
+Generated: review-galaxya55.html
+Generated: review-motorolaedge50ultra.html
+Generated: review-galaxys25ultra.html
+Generated: review-sonywf1000xm5.html
+Generated: review-boseqcearbuds2.html
+Generated: review-galaxybuds3pro.html
+Generated: review-technicseahaz80.html
+Generated: review-ankerliberty4nc.html
+Generated: review-jbltourpro3.html
+Generated: review-nothingear2.html
+Generated: review-sennheisermomentum4.html
+Generated: review-beatsstudiobudsplus.html
+Generated: review-applewatchs10.html
+Generated: review-galaxywatch7.html
+Generated: review-garminfenix8.html
+Generated: review-pixelwatch3.html
+Generated: review-applewatchultra2.html
+Generated: review-garminvenu3.html
+Generated: review-withingsscanwatch2.html
+Generated: review-amazfitgtr4.html
+Generated: review-ipadprom4.html
+Generated: review-ipadairm2.html
+Generated: review-galaxytabs10ultra.html
+Generated: review-ipadmini7.html
+Generated: review-pixeltablet.html
+Generated: review-surfacepro11.html
+Generated: review-firemax11.html
+Generated: review-macbookprom4pro.html
+Generated: review-macbookairm3.html
+Generated: review-dellxps15.html
+Generated: review-thinkpadx1carbon.html
+Generated: review-asusrogzephyrusg14.html
+Generated: review-hpspectrex360.html
+Generated: review-lggram17.html
+Generated: review-razerblade15.html
+Generated: review-lg27gp850b.html
+Generated: review-asusrogswiftpg279qm.html
+Generated: review-dellu2723d.html
+Generated: review-benqpd3205u.html
+Generated: review-samsungodysseyg7.html
+Generated: review-lg45gr95qeb.html
+Generated: review-sonyzve10ii.html
+Generated: review-sonya7cii.html
+Generated: review-fujifilmxt5.html
+Generated: review-canoneosr50.html
+Generated: review-goprohero12.html
+Generated: review-insta360x4.html
+Generated: review-djiosmoaction4.html
+Generated: review-nikonz30.html
+Generated: review-anker733.html
+Generated: review-ankerprime20000.html
+Generated: review-ciosmartcoby.html
+Generated: review-ugreennexode140w.html
+Generated: review-anker547.html
+Generated: review-nintendoswitch2.html
+Generated: review-ps5slim.html
+Generated: review-xboxseriesx.html
+Generated: review-logicoolGProXSuperlight2.html
+Generated: review-steelseriesarctisnova.html
+Generated: review-elgatostreamdeck.html
+Generated: review-hyperxcloudalpha.html
+Generated: review-logicoolmxmaster3s.html
+Generated: review-keychronk2pro.html
+Generated: review-sonywh1000xm5.html
+Generated: review-logicoolmxkeysmini.html
+Generated: review-blueyetix.html
+Generated: review-caldigitts4.html
+Generated: review-samsungt9ssd.html
+Generated: review-wdmypassport5tb.html
+Generated: review-razerdeathadder.html
+Generated: review-elgatocamlink4k.html
+Generated: review-metaquest3.html
+Generated: review-kindlepaperwhite.html
+Generated: review-applehomedpodmini.html
+Generated: review-amazonechoshow10.html
+Generated: review-dysonv15.html
+Generated: review-eufyrobovacx8.html
+Generated: review-appletv4k.html
+Generated: review-sonysrsxb43.html
+Generated: review-soundcorex600.html
+Generated: review-philipshue.html
+Generated: review-sonybraviaA95L.html
+Generated: review-lgoledevoC4.html
+Generated: review-samsungneo95D.html
+Generated: review-sonybravia7.html
+Generated: review-tcl575qm891.html
+Generated: review-hisenseu8n.html
+Generated: review-dysonsupersonichd15.html
+Generated: review-panasonicnanoeEH-NA0J.html
+Generated: review-refadryerpro.html
+Generated: review-reprizer4dplus.html
+Generated: review-oralbioS9.html
+Generated: review-philipssonicare9900.html
+Generated: review-panasonicDoltzEWDP51.html
+Generated: review-oralbioS7.html
+Generated: review-panasoniclamdash9x.html
+Generated: review-braunseries9pro.html
+Generated: review-philips9000prestige.html
+Generated: review-panasoniclamdash5x.html
+Generated: review-roborocks8maxv.html
+Generated: review-iroombaj9plus.html
+Generated: review-dreameX40ultra.html
+Generated: review-ecovacsX5pro.html
+Generated: review-delonghimagnificaevo.html
+Generated: review-nespressovertutenext.html
+Generated: review-sirocaSCC111.html
+Generated: review-panasonicNC-A57.html
+Generated: review-xgimihorizonultra.html
+Generated: review-ankernebulacosmos4k.html
+Generated: review-benqw2720i.html
+Generated: review-sonyHTA7000.html
+Generated: review-sonosarcUltra.html
+Generated: review-samsungHWQ990D.html
+Generated: review-boseSmartSoundbar900.html
+Generated: review-tplinkdecoXE75pro.html
+Generated: review-asusZenWiFiET12.html
+Generated: review-netgearorbiRBK863S.html
+Generated: review-eeromax7.html
+Generated: review-secretlabTitanEvo.html
+Generated: review-noblechairsHERO.html
+Generated: review-akracingProX.html
+Generated: review-dxracerformula.html
+Generated: review-dysonv12detectslim.html
+Generated: review-panasonicMCSBU830K.html
+Generated: review-makitaCL003GZ.html
+Generated: review-sharpHealsioAXXA20.html
+Generated: review-panasonicBistroNEBS1600.html
+Generated: review-sharpKNHW24G.html
+Generated: review-instantpotDuo.html
+Generated: review-galaxys25plus.html
+Generated: review-xperia10vi.html
+Generated: review-iphone16e.html
+Generated: review-motorolaedge50pro.html
+Generated: review-final-ze3000.html
+Generated: review-jabra-evolve2buds.html
+Generated: review-shokzOpenRunPro2.html
+Generated: review-fujifilmx100vi.html
+Generated: review-nikonz50ii.html
+Generated: review-goprohero13black.html
+Generated: review-lgultrafine5k27md5kl.html
+Generated: review-dellalienware34oled.html
+Generated: review-anker747powerbank.html
+Generated: review-ciosmartcobypro30w.html
+Generated: review-boseSoundLinkMax.html
+Generated: review-jblflip6.html
+Generated: review-switchbotmini4k.html
+Generated: review-naturedremov4.html
+Generated: review-ankernano4100w.html
+Generated: review-belkin40w2port.html
+Generated: review-asusrogallyX.html
+Generated: review-logicoolG502X.html
+Generated: review-corsairK100air.html
+Generated: review-sonyinzone-m9ii.html
+Generated: review-elgatovave.html
+Generated: review-logicoolmxbrio4k.html
+Generated: review-ipadprom413inch.html
+Generated: review-galaxytabs10FE.html
+Generated: review-applewatchseries10.html
+Generated: review-garminvivomove5.html
+Generated: review-asuszenbook14oled.html
+Generated: review-lenovo-yoga9i.html
+Generated: review-googlepixel9proXL.html
+Generated: review-iphone16promaxnatural.html
+Generated: review-xiaomi15.html
+Generated: review-omSystem-OM5.html
+Generated: review-marshallEmberton3.html
+Generated: review-bose-ultra-earbuds.html
+Generated: review-sony-wf1000xm5-sport.html
+Generated: review-asusproadart27.html
+Generated: review-lg-oled-c4.html
+Generated: review-sonos-arc-ultra.html
+Generated: review-dyson-airwrap-multi.html
+Generated: review-nespresso-vertuo-next.html
+Generated: review-irobot-roomba-j9plus.html
+Generated: review-ninja-speedi.html
+Generated: review-secretlab-titan-evo.html
+Generated: review-tplink-deco-be65.html
+Generated: review-benq-tk700sti.html
+Generated: review-epson-ehtw7500.html
+Generated: review-boseqc45.html
+
+Total: 192 pages generated
+Generated: cat-smartphone.html (22 products)
+Generated: cat-earphone.html (14 products)
+Generated: cat-smartwatch.html (10 products)
+Generated: cat-tablet.html (9 products)
+Generated: cat-laptop.html (10 products)
+Generated: cat-monitor.html (9 products)
+Generated: cat-camera.html (12 products)
+Generated: cat-battery.html (4 products)
+Generated: cat-charger.html (5 products)
+Generated: cat-gaming.html (10 products)
+Generated: cat-peripherals.html (14 products)
+Generated: cat-vrar.html (1 products)
+Generated: cat-ereader.html (1 products)
+Generated: cat-speaker.html (2 products)
+Generated: cat-appliance.html (2 products)
+Generated: cat-entertainment.html (1 products)
+Generated: cat-speaker2.html (5 products)
+Generated: cat-smarthome.html (3 products)
+Generated: cat-tv.html (7 products)
+Generated: cat-dryer.html (5 products)
+Generated: cat-toothbrush.html (4 products)
+Generated: cat-shaver.html (4 products)
+Generated: cat-robotvacuum.html (5 products)
+Generated: cat-coffee.html (5 products)
+Generated: cat-projector.html (5 products)
+Generated: cat-soundbar.html (5 products)
+Generated: cat-network.html (5 products)
+Generated: cat-gamingchair.html (5 products)
+Generated: cat-cordlessvacuum.html (3 products)
+Generated: cat-cooking.html (5 products)
+Category pages: 30
+sitemap.xml updated
+sitemap-page.html generated
+[1/192] iPhone 16 Pro Max 256GB
+[2/192] iPhone 16 Plus 128GB
+[3/192] iPhone 16 128GB
+[4/192] iPhone SE 第4世代 128GB
+[5/192] Google Pixel 9a 128GB
+[6/192] Google Pixel 8a 128GB
+[7/192] Sony Xperia 1 VI 256GB
+[8/192] Xiaomi 14 Ultra 512GB
+[9/192] OPPO Find X8 Pro 512GB
+[10/192] SHARP AQUOS R9 256GB
+[11/192] OnePlus 13 512GB
+[12/192] Nothing Phone 3a 256GB
+[13/192] Samsung Galaxy A55 5G 256GB
+[14/192] Motorola Edge 50 Ultra 512GB
+[15/192] Samsung Galaxy S25 Ultra 512GB
+[16/192] Sony WF-1000XM5
+[17/192] Bose QuietComfort Earbuds II
+[18/192] Samsung Galaxy Buds 3 Pro
+[19/192] Technics EAH-AZ80
+[20/192] Anker Soundcore Liberty 4 NC
+[21/192] JBL Tour Pro 3
+[22/192] Nothing Ear 2
+[23/192] Sennheiser MOMENTUM True Wireless 4
+[24/192] Beats Studio Buds+
+[25/192] Apple Watch Series 10（46mm）
+[26/192] Samsung Galaxy Watch 7（44mm）
+[27/192] Garmin Fenix 8（47mm）
+[28/192] Google Pixel Watch 3（45mm）
+[29/192] Apple Watch Ultra 2（49mm）
+[30/192] Garmin Venu 3（45mm）
+[31/192] Withings ScanWatch 2（42mm）
+[32/192] Amazfit GTR 4
+[33/192] iPad Pro M4 13インチ（WiFi 256GB）
+[34/192] iPad Air M2 11インチ（WiFi 128GB）
+[35/192] Samsung Galaxy Tab S10 Ultra（WiFi 256GB）
+[36/192] iPad mini 第7世代（WiFi 128GB）
+[37/192] Google Pixel Tablet（WiFi 128GB）
+[38/192] Microsoft Surface Pro 11（Core Ultra 5 128GB）
+[39/192] Amazon Fire Max 11（64GB）
+[40/192] MacBook Pro M4 Pro 14インチ（24GB/512GB）
+[41/192] MacBook Air M3 15インチ（16GB/512GB）
+[42/192] Dell XPS 15（Core Ultra 9/32GB/1TB）
+[43/192] ThinkPad X1 Carbon Gen 12（Core Ultra 7/32GB/1TB）
+[44/192] ASUS ROG Zephyrus G14（Ryzen 9/32GB/1TB）
+[45/192] HP Spectre x360 14（Core Ultra 7/32GB/2TB）
+[46/192] LG Gram 17（Core Ultra 7/32GB/1TB）
+[47/192] Razer Blade 15（Core Ultra 9/32GB/1TB）
+[48/192] LG 27GP850-B
+[49/192] ASUS ROG Swift PG279QM
+[50/192] Dell U2723D
+[51/192] BenQ PD3205U
+[52/192] Samsung Odyssey G7 32インチ
+[53/192] LG 45GR95QE-B
+[54/192] Sony ZV-E10 II
+[55/192] Sony α7C II（ボディ）
+[56/192] Fujifilm X-T5（ボディ）
+[57/192] Canon EOS R50（ボディ）
+[58/192] GoPro HERO12 Black
+[59/192] Insta360 X4
+[60/192] DJI Osmo Action 4
+[61/192] Nikon Z30（ボディ）
+[62/192] Anker 733 Power Bank（GaNPrime PowerCore 65W）
+[63/192] Anker Prime 20000mAh（200W）
+[64/192] CIO SMARTCOBY Pro PLUG 65W
+[65/192] Ugreen Nexode 140W 充電器
+[66/192] Anker 547 Charging Station（6-in-1）
+[67/192] Nintendo Switch 2
+[68/192] PlayStation 5 Slim（ディスクエディション）
+[69/192] Xbox Series X
+[70/192] Logicool G Pro X Superlight 2
+[71/192] SteelSeries Arctis Nova Pro Wireless
+[72/192] Elgato Stream Deck MK.2（15キー）
+[73/192] HyperX Cloud Alpha Wireless
+[74/192] Logicool MX Master 3S
+[75/192] Keychron K2 Pro（RGBバックライト）
+[76/192] Sony WH-1000XM5
+[77/192] Logicool MX Keys Mini（バックライトあり）
+[78/192] Blue Yeti X
+[79/192] CalDigit TS4（Thunderbolt 4ドック）
+[80/192] Samsung T9 外付けSSD 4TB
+[81/192] WD My Passport 5TB
+[82/192] Razer DeathAdder V3 HyperSpeed
+[83/192] Elgato Cam Link 4K
+[84/192] Meta Quest 3（128GB）
+[85/192] Kindle Paperwhite 第11世代（16GB）
+[86/192] Apple HomePod mini 第2世代
+[87/192] Amazon Echo Show 10（第3世代）
+[88/192] Dyson V15 Detect（コードレス）
+[89/192] Anker Eufy RoboVac X8 Hybrid
+[90/192] Apple TV 4K 第3世代（Wi-Fi）
+[91/192] Sony SRS-XB43
+[92/192] Anker Soundcore Motion X600
+[93/192] Philips Hue スターターキット（E26 ×3+ブリッジ）
+[94/192] Sony BRAVIA XR A95L 65インチ
+[95/192] LG OLED evo C4 65インチ
+[96/192] Samsung Neo QLED QN95D 65インチ
+[97/192] Sony BRAVIA 7 65インチ
+[98/192] TCL QM891G 55インチ
+[99/192] Hisense U8N 65インチ
+[100/192] Dyson Supersonic r HD15
+[101/192] Panasonic ナノケア EH-NA0J
+[102/192] ReFa BEAUTECH DRYER PRO
+[103/192] レプロナイザー 4D Plus
+[104/192] Oral-B iO Series 9
+[105/192] Philips Sonicare 9900 Prestige
+[106/192] Panasonic Doltz EW-DP51
+[107/192] Oral-B iO Series 7
+[108/192] Panasonic ラムダッシュ PRO ES-LS9AX
+[109/192] Braun Series 9 Pro 9477cc
+[110/192] Philips S9000 Prestige SP9883
+[111/192] Panasonic ラムダッシュ ES-LV67
+[112/192] Roborock S8 MaxV Ultra
+[113/192] iRobot Roomba j9+
+[114/192] Dreame X40 Ultra
+[115/192] Ecovacs Deebot X5 Pro Omni
+[116/192] De'Longhi マグニフィカ エボ ECAM29051B
+[117/192] Nespresso Vertuo Next
+[118/192] シロカ 全自動コーヒーメーカー SC-C111
+[119/192] Panasonic 全自動コーヒーメーカー NC-A57
+[120/192] XGIMI HORIZON Ultra
+[121/192] Anker Nebula Cosmos Laser 4K
+[122/192] BenQ W2720i
+[123/192] Sony HT-A7000
+[124/192] Sonos Arc Ultra
+[125/192] Samsung HW-Q990D
+[126/192] Bose Smart Soundbar 900
+[127/192] TP-Link Deco XE75 Pro
+[128/192] ASUS ZenWiFi Pro ET12
+[129/192] Netgear Orbi RBK863S
+[130/192] Amazon Eero Max 7
+[131/192] Secretlab TITAN Evo 2022
+[132/192] noblechairs HERO ゲーミングチェア
+[133/192] AKRacing Pro-X V2
+[134/192] DXRacer Formula Series OH/FH08
+[135/192] Dyson V12 Detect Slim
+[136/192] Panasonic MC-SBU830K
+[137/192] マキタ CL003GZ（40V）
+[138/192] シャープ ヘルシオ AX-XA20
+[139/192] Panasonic ビストロ NE-BS1600
+[140/192] シャープ ホットクック KN-HW24G
+[141/192] Instant Pot Duo 7-in-1
+[142/192] Samsung Galaxy S25+
+[143/192] Sony Xperia 10 VII
+[144/192] iPhone 16e
+[145/192] Motorola Edge 50 Pro
+[146/192] final ZE3000 ANC
+[147/192] Jabra Evolve2 Buds
+[148/192] Shokz OpenRun Pro 2
+[149/192] Fujifilm X100VI
+[150/192] Nikon Z50 II
+[151/192] GoPro HERO13 Black
+[152/192] LG UltraFine 5K 27MD5KL
+[153/192] Dell Alienware 34 OLED（AW3423DWF）
+[154/192] Anker 747 Power Bank
+[155/192] CIO SMARTCOBY Pro SLIM 30W
+[156/192] Bose SoundLink Max
+[157/192] JBL Flip 6
+[158/192] SwitchBot ハブ2
+[159/192] Nature Remo 4
+[160/192] Anker Nano 4 100W
+[161/192] Belkin BOOST↑CHARGE PRO 40W 2ポート
+[162/192] ASUS ROG Ally X
+[163/192] Logicool G502 X Plus
+[164/192] Corsair K100 Air Wireless
+[165/192] Sony INZONE M9 II
+[166/192] Elgato Wave DX
+[167/192] Logicool MX Brio 4K
+[168/192] iPad Pro M4 13インチ
+[169/192] Samsung Galaxy Tab S10 FE
+[170/192] Apple Watch Series 10 46mm
+Traceback (most recent call last):
+  File "C:\Users\81804\OneDrive\デスクトップ\auto-affiliate-blog-main\translate_products.py", line 44, in <module>
+    print(f"[{i+1}/{total}] {p['name']}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'cp932' codec can't encode character '\xed' in position 18: illegal multibyte sequence
