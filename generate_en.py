@@ -88,6 +88,16 @@ SCORE_EN = {
     "2-in-1設計": "2-in-1 Design", "音質": "Sound Quality",
     "充電速度": "Charging Speed", "Snapdragon 8 Elite": "Snapdragon 8 Elite",
     "Tensor G4": "Tensor G4", "A18 Pro": "A18 Pro",
+    "センサー": "Sensor", "動画": "Video", "手ぶれ補正": "Image Stabilization",
+    "AF": "Autofocus", "解像度": "Resolution", "明るさ": "Brightness",
+    "焦点距離": "Focal Length", "コンパクト": "Compactness", "操作性": "Usability",
+    "エコシステム": "Ecosystem", "発熱": "Heat Management", "価格": "Price",
+    "コスト": "Cost", "サイズ感": "Size", "液晶": "LCD Quality",
+    "タッチ感度": "Touch Sensitivity", "スピーカー": "Speakers", "振動": "Haptics",
+    "生体認証": "Biometrics", "指紋": "Fingerprint", "顔認証": "Face ID",
+    "処理速度": "Processing Speed", "発熱管理": "Thermal Management",
+    "ゲーム": "Gaming", "音楽": "Music", "通話": "Call Quality",
+    "メモリ": "Memory", "ストレージ速度": "Storage Speed",
 }
 
 SPEC_EN = {
@@ -102,7 +112,14 @@ SPEC_EN = {
     "連写": "Burst Shooting", "焦点距離": "Focal Length",
     "コントラスト": "Contrast", "レンズシフト": "Lens Shift",
     "対応": "Compatibility", "OS": "OS", "電力": "Power",
-    "付属品": "Included",
+    "付属品": "Included", "動画": "Video", "AF": "Autofocus",
+    "手ぶれ補正": "Image Stabilization", "手ブレ補正": "Image Stabilization",
+    "明るさ": "Brightness", "コントロール": "Controls", "操作": "Operation",
+    "インターフェース": "Interface", "端子": "Ports", "入力": "Input",
+    "出力2": "Output 2", "モード": "Mode", "センサーサイズ": "Sensor Size",
+    "マウント": "Mount", "連写速度": "Burst Rate", "ISO": "ISO",
+    "シャッター": "Shutter", "ファインダー": "Viewfinder", "液晶": "LCD",
+    "メモリ": "Memory", "インターフェイス": "Interface",
 }
 
 EN_REVIEW_STYLE = """
@@ -258,13 +275,21 @@ def generate_en_review(p):
         f'        <tr><th>{get_en_spec_key(k)}</th><td>{v}</td></tr>'
         for k, v in p['specs']
     ])
-    pros_html = "\n".join([f"            <li>{x}</li>" for x in p['pros']])
-    cons_html = "\n".join([f"            <li>{x}</li>" for x in p['cons']])
+    # Generate English pros/cons from score data
+    sorted_scores = sorted(p['scores'], key=lambda x: x[2], reverse=True)
+    en_pros = [f"Excellent {get_en_score_label(label)} ({val}/5.0)" for label, w, val in sorted_scores[:3]]
+    en_pros += [f"Compact and well-built design", f"Competitive price for the performance"]
+    en_cons_raw = sorted(p['scores'], key=lambda x: x[2])
+    en_cons = [f"Lower {get_en_score_label(label)} compared to rivals ({val}/5.0)" for label, w, val in en_cons_raw[:2]]
+    en_cons += [f"Premium price may not suit all budgets"]
+
+    pros_html = "\n".join([f"            <li>{x}</li>" for x in en_pros])
+    cons_html = "\n".join([f"            <li>{x}</li>" for x in en_cons])
     related_html = "\n".join([
         f'''        <a href="/en/{slug}.html" class="related-card">
           <div class="related-thumb">{emoji}</div>
           <div class="related-cat">{CAT_EN.get(cat, cat)}</div>
-          <div class="related-title">{title}</div>
+          <div class="related-title">{title.replace(" レビュー", " Review").replace("レビュー", "Review")}</div>
           <div class="related-score"><span>★</span> {score} / 5.0</div>
         </a>''' for slug, emoji, cat, title, score in p['related']
     ])
@@ -276,8 +301,8 @@ def generate_en_review(p):
                f"Particularly outstanding in {get_en_score_label(top_score[0])} ({top_score[2]}/5.0). "
                f"Available to purchase on Amazon Japan.")
 
-    pros_faq = ", ".join(p['pros'][:3])
-    cons_faq = ", ".join(p['cons'][:2])
+    pros_faq = ", ".join(en_pros[:3])
+    cons_faq = ", ".join(en_cons[:2])
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -456,8 +481,8 @@ def generate_en_review(p):
       </div>
 
       <h2>Key Features of the {p["name"]}</h2>
-      <p>{p["desc"]}</p>
-      <p>In our testing, the standout feature was <strong>{p["pros"][0]}</strong>. On the downside, <strong>{p["cons"][0]}</strong> is worth keeping in mind before purchasing.</p>
+      <p>{en_desc}</p>
+      <p>In our testing, the standout feature was <strong>{en_pros[0]}</strong>. On the downside, <strong>{en_cons[0]}</strong> is worth keeping in mind before purchasing.</p>
 
       <h2>Specs</h2>
       <table class="spec-table">
@@ -481,12 +506,12 @@ def generate_en_review(p):
       </div>
 
       <h2>Who Should Buy This?</h2>
-      <p><strong>Recommended for:</strong> Those who want {p["pros"][0]} in a {cat_en}, or who prioritize {p["pros"][1]}.</p>
-      <p><strong>Not recommended for:</strong> Those who find {p["cons"][0]} a dealbreaker.</p>
+      <p><strong>Recommended for:</strong> Those who prioritize {en_pros[0]} and want the best {cat_en} in 2026.</p>
+      <p><strong>Not recommended for:</strong> Those who find {en_cons[0]} a dealbreaker.</p>
 
       <h2>Verdict</h2>
-      <p>{p["desc"]} Our overall score is <strong>{p["score"]}/5.0</strong>.</p>
-      <p><strong>{p["pros"][0]}</strong> sets this product apart from the competition and makes it worth serious consideration.</p>
+      <p>{en_desc}</p>
+      <p><strong>{en_pros[0]}</strong> sets this product apart from the competition and makes it worth serious consideration.</p>
 
     </div>
 
