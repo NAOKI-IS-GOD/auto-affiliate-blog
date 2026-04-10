@@ -241,6 +241,7 @@ EN_FOOTER = '''<footer>
 
 def generate_en_review(p):
     cat_en = CAT_EN.get(p['cat'], p['cat'])
+    cat_slug = CAT_SLUGS.get(p['cat'], 'cat-other')
     brand = get_brand(p['name'])
     bg1, bg2 = p['bg'].split(',')
     amazon_url = f"https://www.amazon.co.jp/s?k={quote_plus(p['name'])}"
@@ -400,7 +401,7 @@ def generate_en_review(p):
   <div class="review-page" style="padding:0;">
     <div class="breadcrumb">
       <a href="/en/">Home</a><span>›</span>
-      <a href="/en/cat-{p["cat"]}.html">{cat_en}</a><span>›</span>
+      <a href="/en/{cat_slug}.html">{cat_en}</a><span>›</span>
       {p["name"]} Review
     </div>
   </div>
