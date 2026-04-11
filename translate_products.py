@@ -41,7 +41,7 @@ def translate(text):
 total = len(PRODUCTS)
 for i, p in enumerate(PRODUCTS):
     slug = p['slug']
-    print(f"[{i+1}/{total}] {p['name']}")
+    print(f"[{i+1}/{total}] {p['name']}".encode('cp932', errors='replace').decode('cp932'))
 
     # name: skip (handled by regex in generate_en.py)
 

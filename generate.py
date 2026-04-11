@@ -752,9 +752,9 @@ def generate_html(p):
       <a href="index.html#reviews">レビュー</a>
       <a href="privacy.html">プライバシー</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span style="font-size:0.8rem;padding:5px 10px;background:var(--primary);color:#fff;border-radius:50px;">🇯🇵 JA</span>
-      <a href="/en/{p["slug"]}.html" style="font-size:0.8rem;padding:5px 10px;border:1px solid var(--border);border-radius:50px;color:var(--text);text-decoration:none;">🇬🇧 EN</a>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span class="lang-btn active">🇯🇵 JA</span>
+      <a href="/en/{p["slug"]}.html" class="lang-btn">🇬🇧 EN</a>
     </div>
   </div>
 </header>
@@ -1053,9 +1053,9 @@ def generate_category_html(cat_name, products):
       <a href="index.html#reviews">レビュー</a>
       <a href="privacy.html">プライバシー</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span style="font-size:0.8rem;padding:5px 10px;background:var(--primary);color:#fff;border-radius:50px;">🇯🇵 JA</span>
-      <a href="/en/{slug}.html" style="font-size:0.8rem;padding:5px 10px;border:1px solid var(--border);border-radius:50px;color:var(--text);text-decoration:none;">🇬🇧 EN</a>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span class="lang-btn active">🇯🇵 JA</span>
+      <a href="/en/{slug}.html" class="lang-btn">🇬🇧 EN</a>
     </div>
   </div>
 </header>
@@ -1218,9 +1218,9 @@ sitemap_page = f'''<!DOCTYPE html>
       <a href="index.html#reviews">レビュー</a>
       <a href="privacy.html">プライバシー</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span style="font-size:0.8rem;padding:5px 10px;background:var(--primary);color:#fff;border-radius:50px;">🇯🇵 JA</span>
-      <a href="/en/" style="font-size:0.8rem;padding:5px 10px;border:1px solid var(--border);border-radius:50px;color:var(--text);text-decoration:none;">🇬🇧 EN</a>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span class="lang-btn active">🇯🇵 JA</span>
+      <a href="/en/" class="lang-btn">🇬🇧 EN</a>
     </div>
   </div>
 </header>

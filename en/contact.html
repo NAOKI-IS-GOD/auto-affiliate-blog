@@ -39,10 +39,44 @@
       <a href="/en/faq.html">FAQ</a>
       <a href="/en/privacy.html">Privacy</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <a href="/" style="font-size:0.8rem;padding:5px 10px;border:1px solid var(--border);border-radius:50px;color:var(--text);text-decoration:none;">🇯🇵 JA</a>
-      <span style="font-size:0.8rem;padding:5px 10px;background:var(--primary);color:#fff;border-radius:50px;">🇬🇧 EN</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <a href="/" class="lang-btn">🇯🇵 JA</a>
+      <span class="lang-btn active">🇬🇧 EN</span>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <nav class="mobile-nav">
+      <a href="/en/#ranking" class="mobile-nav-link">🏆 Rankings</a>
+      <a href="/en/#reviews" class="mobile-nav-link">📝 Reviews</a>
+      <div class="mobile-nav-sep">📋 Categories</div>
+      <a href="/en/cat-smartphone.html" class="mobile-nav-link">📱 Smartphones</a>
+      <a href="/en/cat-earphone.html" class="mobile-nav-link">🎧 Wireless Earbuds</a>
+      <a href="/en/cat-laptop.html" class="mobile-nav-link">💻 Laptops</a>
+      <a href="/en/cat-smartwatch.html" class="mobile-nav-link">⌚ Smartwatches</a>
+      <a href="/en/cat-tablet.html" class="mobile-nav-link">📟 Tablets</a>
+      <a href="/en/cat-camera.html" class="mobile-nav-link">📷 Cameras</a>
+      <a href="/en/cat-gaming.html" class="mobile-nav-link">🎮 Gaming</a>
+      <a href="/en/cat-tv.html" class="mobile-nav-link">📺 TVs</a>
+      <a href="/en/cat-monitor.html" class="mobile-nav-link">🖥️ Monitors</a>
+      <div class="mobile-nav-sep">🏠 Home Appliances</div>
+      <a href="/en/cat-robotvacuum.html" class="mobile-nav-link">🤖 Robot Vacuums</a>
+      <a href="/en/cat-cooking.html" class="mobile-nav-link">🍳 Kitchen Appliances</a>
+      <a href="/en/cat-dryer.html" class="mobile-nav-link">💨 Hair Dryers</a>
+      <a href="/en/cat-coffee.html" class="mobile-nav-link">☕ Coffee Makers</a>
+      <a href="/en/cat-soundbar.html" class="mobile-nav-link">🔊 Soundbars</a>
+      <a href="/en/cat-projector.html" class="mobile-nav-link">📽️ Projectors</a>
+      <a href="/en/cat-network.html" class="mobile-nav-link">📡 Network Devices</a>
+      <a href="/en/cat-gamingchair.html" class="mobile-nav-link">🪑 Gaming Chairs</a>
+      <a href="/en/cat-cordlessvacuum.html" class="mobile-nav-link">🧹 Cordless Vacuums</a>
+      <a href="/en/cat-peripherals.html" class="mobile-nav-link">🖱️ PC Peripherals</a>
+      <a href="/en/cat-smarthome.html" class="mobile-nav-link">💡 Smart Home</a>
+      <div class="mobile-nav-sep">🔗 Info</div>
+      <a href="/en/faq.html" class="mobile-nav-link">❓ FAQ</a>
+      <a href="/en/contact.html" class="mobile-nav-link">✉️ Contact</a>
+    </nav>
   </div>
 </header>
 <div style="background:var(--bg);padding:20px;min-height:80vh;">
@@ -82,5 +116,25 @@
     </div>
   </div>
 </footer>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('is-open');
+      drawer.classList.toggle('is-open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>
 </body>
 </html>

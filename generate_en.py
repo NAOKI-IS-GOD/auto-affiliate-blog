@@ -63,6 +63,7 @@ CAT_EN = {
     "ゲーミングチェア": "Gaming Chairs",
     "コードレス掃除機": "Cordless Vacuums",
     "調理家電": "Kitchen Appliances",
+    "電子書籍": "E-Books",
 }
 
 # Score label → English
@@ -129,6 +130,59 @@ SPEC_EN = {
     "マウント": "Mount", "連写速度": "Burst Rate", "ISO": "ISO",
     "シャッター": "Shutter", "ファインダー": "Viewfinder", "液晶": "LCD",
     "メモリ": "Memory", "インターフェイス": "Interface",
+    "メモリ": "Memory", "ストレージ速度": "Storage Speed",
+    # Additional spec keys
+    "USB-C単独": "USB-C Only", "アタッチメント": "Attachment", "アプリ": "App",
+    "アームレスト": "Armrest", "カスタマイズ": "Customization",
+    "カップサイズ": "Cup Size", "カバー範囲": "Coverage", "カラー": "Color",
+    "キャリブレーション": "Calibration", "キー数": "Keys",
+    "グラインダー": "Grinder", "ケーブル長": "Cable Length",
+    "ゲーミング": "Gaming", "ゲーム": "Games", "スイッチ": "Switch",
+    "スピーカー": "Speaker", "スポーツ": "Sports", "ソフト": "Software",
+    "チャンネル": "Channels", "デザイン": "Design", "ドック": "Dock",
+    "ドック出力": "Dock Output", "ノズル": "Nozzle", "ハードウェア": "Hardware",
+    "バックホール": "Backhaul", "バックライト": "Backlight", "バンド": "Band",
+    "フィルター": "Filter", "フィルムシミュレーション": "Film Simulation",
+    "プロセッサー": "Processor", "ボタン": "Buttons", "ポート": "Ports",
+    "ポーリングレート": "Polling Rate", "マイク": "Microphone",
+    "マッピング": "Mapping", "マルチペアリング": "Multi-pairing",
+    "メッシュ": "Mesh", "メニュー": "Menu", "モーション": "Motion",
+    "モーター": "Motor", "リクライニング": "Reclining",
+    "リフレッシュレート": "Refresh Rate", "リモコン": "Remote",
+    "レンズ": "Lens", "レーザー": "Laser", "レーザー寿命": "Laser Lifespan",
+    "予熱": "Preheat", "互換": "Compatibility", "保温": "Keep Warm",
+    "入力遅延": "Input Latency", "刃": "Blade", "制御": "Control",
+    "厚さ": "Thickness", "吸引力": "Suction Power", "周波数": "Frequency",
+    "周波数特性": "Frequency Response", "回転": "Rotation",
+    "国内規格": "Japan Standard", "圧力": "Pressure", "安全": "Safety",
+    "容量": "Capacity", "対応OS": "Compatible OS",
+    "対応アプリ": "Compatible Apps", "対応カプセル": "Compatible Capsules",
+    "対応バッテリー": "Compatible Battery", "対応フォーマット": "Supported Formats",
+    "対応体重": "Supported Weight", "対応台数": "Supported Devices",
+    "応答速度": "Response Time", "急速充電": "Fast Charging",
+    "感度": "Sensitivity", "技術": "Technology", "折りたたみ": "Foldable",
+    "振動": "Vibration", "振動数": "Vibration Frequency",
+    "接続台数": "Connected Devices", "日本メーカー": "Japanese Brand",
+    "映像": "Video", "映像出力": "Video Output", "暗号化": "Encryption",
+    "最大出力": "Max Output", "極性パターン": "Polar Pattern",
+    "構成": "Configuration", "機能": "Features", "水拭き": "Wet Mopping",
+    "洗浄": "Cleaning", "消費電力": "Power Consumption",
+    "温度": "Temperature", "温度制御": "Temperature Control",
+    "温湿度": "Temp/Humidity", "生産": "Manufacturing",
+    "空間オーディオ": "Spatial Audio", "素材": "Material",
+    "給電": "Power Supply", "耐荷重": "Load Capacity",
+    "耐衝撃": "Shock Resistance", "腰サポート": "Lumbar Support",
+    "自動収集": "Auto Collection", "色域": "Color Gamut",
+    "色温度": "Color Temperature", "薄さ": "Thinness", "規格": "Standard",
+    "視野角": "Viewing Angle", "設定": "Settings", "認定": "Certification",
+    "認証": "Authentication", "調理方式": "Cooking Method",
+    "調理時間": "Cooking Time", "赤外線": "Infrared",
+    "転送速度": "Transfer Speed", "輝度": "Brightness", "速度": "Speed",
+    "連携": "Integration", "遅延": "Latency",
+    "障害物回避": "Obstacle Avoidance", "障害物検知": "Obstacle Detection",
+    "電源": "Power Source", "電球": "Bulb Type", "音場補正": "Room Correction",
+    "音声": "Voice", "音声アシスタント": "Voice Assistant",
+    "風量": "Airflow", "騒音": "Noise Level",
 }
 
 EN_EXTRA_STYLE = """
@@ -154,13 +208,41 @@ import re as _re
 def en_name(name):
     """Replace Japanese parts in product names with English equivalents."""
     r = name
+    # Generation markers
     r = _re.sub(r'（第(\d+)世代）', lambda m: f' ({_ordinal(int(m.group(1)))} Gen)', r)
-    r = r.replace('インチ', '-inch').replace('ボディ', 'Body').replace('（ボディ）', ' (Body)')
-    r = r.replace('（', ' (').replace('）', ')')
+    r = _re.sub(r'第(\d+)世代', lambda m: f'{_ordinal(int(m.group(1)))} Gen', r)
+    # Units
+    r = r.replace('インチ', '-inch').replace('キー', '-Key')
     r = r.replace('万画素', 'MP').replace('枚刃', '-blade')
+    # Body/brackets
+    r = r.replace('（ボディ）', ' (Body)').replace('ボディ', 'Body')
+    r = r.replace('（', ' (').replace('）', ')')
+    # Product-specific terms (longer strings first)
+    r = r.replace('バックライトあり', 'with Backlight').replace('バックライト', 'Backlight')
+    r = r.replace('ディスクエディション', 'Disc Edition')
+    r = r.replace('急速調理器', 'Rapid Cooker')
+    r = r.replace('ゲーミングチェア', 'Gaming Chair')
+    r = r.replace('コードレス', 'Cordless')
+    r = r.replace('充電器', 'Charger')
+    r = r.replace('外付け', 'External')
+    r = r.replace('ドック', 'Dock')
+    r = r.replace('ハブ', 'Hub')
+    # Brand/product names
     r = r.replace('ラムダッシュ', 'Lamdash').replace('ビストロ', 'Bistro')
     r = r.replace('ナノケア', 'NanoCare').replace('ドルツ', 'Doltz')
     r = r.replace('ヒーシオ', 'Healsio').replace('ヘルシオ', 'Healsio')
+    r = r.replace('レプロナイザー', 'Repronizer').replace('ホットクック', 'Hotkook')
+    r = r.replace('マグニフィカ', 'Magnifica').replace('エボ', 'Evo')
+    r = r.replace('シャープ', 'Sharp').replace('シロカ', 'Siroca').replace('マキタ', 'Makita')
+    r = r.replace('ポート', '-Port')
+    r = r.replace('全自動コーヒーメーカー', 'Fully Automatic Coffee Maker')
+    r = r.replace('全自動', 'Fully Automatic')
+    r = r.replace('充電ステーション', 'Charging Station')
+    r = r.replace('スロークッカー', 'Slow Cooker')
+    r = r.replace('アロマフレッシュ', 'AromaFresh')
+    r = r.replace('ノンフライヤー', 'Air Fryer')
+    r = r.replace('スターターキット', 'Starter Kit').replace('ブリッジ', 'Bridge')
+    r = r.replace('\u30fb', '/').replace('・', '/')  # Japanese middle dot
     r = _re.sub(r'\s+', ' ', r).strip()
     return r
 
@@ -192,7 +274,10 @@ def get_brand(name):
           "hisense":"Hisense","tcl":"TCL","braun":"Braun","oral-b":"Oral-B","oralb":"Oral-B",
     }
     nl = name.lower().replace("-","").replace(" ","")
-    return next((v for k,v in bm.items() if nl.startswith(k)), name.split()[0])
+    result = next((v for k,v in bm.items() if nl.startswith(k)), None)
+    if result:
+        return result
+    return en_name(name.split()[0])
 
 EN_HEADER = '''<header>
   <div class="header-inner">
@@ -203,9 +288,9 @@ EN_HEADER = '''<header>
       <a href="/en/faq.html">FAQ</a>
       <a href="/en/privacy.html">Privacy</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <a href="/" style="font-size:0.8rem;padding:5px 10px;border:1px solid var(--border);border-radius:50px;color:var(--text);text-decoration:none;">🇯🇵 JA</a>
-      <span style="font-size:0.8rem;padding:5px 10px;background:var(--primary);color:#fff;border-radius:50px;">🇬🇧 EN</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <a href="/" class="lang-btn">🇯🇵 JA</a>
+      <span class="lang-btn active">🇬🇧 EN</span>
     </div>
   </div>
 </header>'''
@@ -243,7 +328,7 @@ def generate_en_review(p):
         </div>''' for label, w, val in p['scores']
     ])
     specs_html = "\n".join([
-        f'        <tr><th>{get_en_spec_key(k)}</th><td>{t(v)}</td></tr>'
+        f'        <tr><th>{get_en_spec_key(k)}</th><td>{t(v).replace(chr(0x30fb), "/").replace("・", "/")}</td></tr>'
         for k, v in p['specs']
     ])
     # Use translated pros/cons
@@ -410,7 +495,7 @@ def generate_en_review(p):
         <div class="author"><div class="avatar">👤</div><span>GadgetNavi Editorial</span></div>
         <span>📅 April 5, 2026</span>
         <span>🕐 6 min read</span>
-        <a href="{BASE_URL}{p["slug"]}.html" style="color:var(--primary);font-size:0.8rem;">🇯🇵 日本語版</a>
+        <a href="{BASE_URL}{p["slug"]}.html" style="color:var(--primary);font-size:0.8rem;">🇯🇵 JP</a>
       </div>
     </div>
 

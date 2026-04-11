@@ -1,5 +1,6 @@
 """Generate English static pages: /en/index.html, /en/faq.html, /en/contact.html, /en/privacy.html"""
-import os, sys
+import os, sys, re as _re
+from urllib.parse import quote_plus
 sys.path.insert(0, os.path.dirname(__file__))
 
 _gen_path = os.path.join(os.path.dirname(__file__), 'generate.py')
@@ -18,6 +19,49 @@ import json
 _tr_path = os.path.join(os.path.dirname(__file__), 'translations_en.json')
 TR = json.load(open(_tr_path, encoding='utf-8')) if os.path.exists(_tr_path) else {}
 def t(text): return TR.get(text, text)
+
+def _ordinal(n):
+    return {1:'1st',2:'2nd',3:'3rd'}.get(n, f'{n}th')
+
+def en_name(name):
+    """Replace Japanese parts in product names with English equivalents."""
+    r = name
+    # Generation markers
+    r = _re.sub(r'（第(\d+)世代）', lambda m: f' ({_ordinal(int(m.group(1)))} Gen)', r)
+    r = _re.sub(r'第(\d+)世代', lambda m: f'{_ordinal(int(m.group(1)))} Gen', r)
+    # Units
+    r = r.replace('インチ', '-inch').replace('キー', '-Key')
+    r = r.replace('万画素', 'MP').replace('枚刃', '-blade')
+    # Body/brackets
+    r = r.replace('（ボディ）', ' (Body)').replace('ボディ', 'Body')
+    r = r.replace('（', ' (').replace('）', ')')
+    # Product-specific terms (longer strings first)
+    r = r.replace('バックライトあり', 'with Backlight').replace('バックライト', 'Backlight')
+    r = r.replace('ディスクエディション', 'Disc Edition')
+    r = r.replace('急速調理器', 'Rapid Cooker')
+    r = r.replace('ゲーミングチェア', 'Gaming Chair')
+    r = r.replace('コードレス', 'Cordless')
+    r = r.replace('充電器', 'Charger')
+    r = r.replace('外付け', 'External')
+    r = r.replace('ドック', 'Dock')
+    r = r.replace('ハブ', 'Hub')
+    # Brand/product names
+    r = r.replace('ラムダッシュ', 'Lamdash').replace('ビストロ', 'Bistro')
+    r = r.replace('ナノケア', 'NanoCare').replace('ドルツ', 'Doltz')
+    r = r.replace('ヒーシオ', 'Healsio').replace('ヘルシオ', 'Healsio')
+    r = r.replace('レプロナイザー', 'Repronizer').replace('ホットクック', 'Hotkook')
+    r = r.replace('マグニフィカ', 'Magnifica').replace('エボ', 'Evo')
+    r = r.replace('シャープ', 'Sharp').replace('シロカ', 'Siroca').replace('マキタ', 'Makita')
+    r = r.replace('ポート', '-Port')
+    r = r.replace('全自動コーヒーメーカー', 'Fully Automatic Coffee Maker')
+    r = r.replace('スターターキット', 'Starter Kit').replace('ブリッジ', 'Bridge')
+    r = _re.sub(r'\s+', ' ', r).strip()
+    return r
+
+def make_stars(score):
+    if score >= 4.7: return '★★★★★'
+    if score >= 4.3: return '★★★★☆'
+    return '★★★☆☆'
 
 CAT_EN = {
     "スマートフォン": "Smartphones", "PC周辺機器": "PC Peripherals",
@@ -44,12 +88,65 @@ EN_HEADER = '''<header>
       <a href="/en/faq.html">FAQ</a>
       <a href="/en/privacy.html">Privacy</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <a href="/" style="font-size:0.8rem;padding:5px 10px;border:1px solid var(--border);border-radius:50px;color:var(--text);text-decoration:none;">🇯🇵 JA</a>
-      <span style="font-size:0.8rem;padding:5px 10px;background:var(--primary);color:#fff;border-radius:50px;">🇬🇧 EN</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <a href="/" class="lang-btn">🇯🇵 JA</a>
+      <span class="lang-btn active">🇬🇧 EN</span>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <nav class="mobile-nav">
+      <a href="/en/#ranking" class="mobile-nav-link">🏆 Rankings</a>
+      <a href="/en/#reviews" class="mobile-nav-link">📝 Reviews</a>
+      <div class="mobile-nav-sep">📋 Categories</div>
+      <a href="/en/cat-smartphone.html" class="mobile-nav-link">📱 Smartphones</a>
+      <a href="/en/cat-earphone.html" class="mobile-nav-link">🎧 Wireless Earbuds</a>
+      <a href="/en/cat-laptop.html" class="mobile-nav-link">💻 Laptops</a>
+      <a href="/en/cat-smartwatch.html" class="mobile-nav-link">⌚ Smartwatches</a>
+      <a href="/en/cat-tablet.html" class="mobile-nav-link">📟 Tablets</a>
+      <a href="/en/cat-camera.html" class="mobile-nav-link">📷 Cameras</a>
+      <a href="/en/cat-gaming.html" class="mobile-nav-link">🎮 Gaming</a>
+      <a href="/en/cat-tv.html" class="mobile-nav-link">📺 TVs</a>
+      <a href="/en/cat-monitor.html" class="mobile-nav-link">🖥️ Monitors</a>
+      <div class="mobile-nav-sep">🏠 Home Appliances</div>
+      <a href="/en/cat-robotvacuum.html" class="mobile-nav-link">🤖 Robot Vacuums</a>
+      <a href="/en/cat-cooking.html" class="mobile-nav-link">🍳 Kitchen Appliances</a>
+      <a href="/en/cat-dryer.html" class="mobile-nav-link">💨 Hair Dryers</a>
+      <a href="/en/cat-coffee.html" class="mobile-nav-link">☕ Coffee Makers</a>
+      <a href="/en/cat-soundbar.html" class="mobile-nav-link">🔊 Soundbars</a>
+      <a href="/en/cat-projector.html" class="mobile-nav-link">📽️ Projectors</a>
+      <a href="/en/cat-network.html" class="mobile-nav-link">📡 Network Devices</a>
+      <a href="/en/cat-gamingchair.html" class="mobile-nav-link">🪑 Gaming Chairs</a>
+      <a href="/en/cat-cordlessvacuum.html" class="mobile-nav-link">🧹 Cordless Vacuums</a>
+      <a href="/en/cat-peripherals.html" class="mobile-nav-link">🖱️ PC Peripherals</a>
+      <a href="/en/cat-smarthome.html" class="mobile-nav-link">💡 Smart Home</a>
+      <div class="mobile-nav-sep">🔗 Info</div>
+      <a href="/en/faq.html" class="mobile-nav-link">❓ FAQ</a>
+      <a href="/en/contact.html" class="mobile-nav-link">✉️ Contact</a>
+    </nav>
   </div>
 </header>'''
+
+HAMBURGER_JS = '''  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('is-open');
+      drawer.classList.toggle('is-open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }'''
 
 EN_FOOTER = '''<footer>
   <div class="footer-inner">
@@ -68,39 +165,58 @@ EN_FOOTER = '''<footer>
 </footer>'''
 
 # ---- /en/index.html ----
-top_products = sorted(PRODUCTS, key=lambda x: x['score'], reverse=True)[:12]
+top3 = sorted(PRODUCTS, key=lambda x: x['score'], reverse=True)[:3]
+all_sorted = sorted(PRODUCTS, key=lambda x: x['score'], reverse=True)
 cat_map = defaultdict(list)
 for p in PRODUCTS:
     cat_map[p['cat']].append(p)
 
-ranking_cards = "\n".join([f'''  <a href="/en/{p['slug']}.html" class="rank-card">
-    <div class="rank-num">#{i+1}</div>
-    <div class="rank-thumb" style="background:linear-gradient(135deg,{p['bg'].split(',')[0].strip()},{p['bg'].split(',')[1].strip()})">
-      <span style="font-size:2rem;">{p['emoji']}</span>
-    </div>
-    <div class="rank-body">
-      <div class="rank-cat">{CAT_EN.get(p['cat'], p['cat'])}</div>
-      <div class="rank-name">{p['name']}</div>
-      <div class="rank-score">★ {p['score']} / 5.0</div>
-      <div class="rank-price">From {p['price']}</div>
-    </div>
-  </a>''' for i, p in enumerate(top_products)])
+RANK_LABELS = ['🥇 Editor\'s Top Pick', '🥈 Best Value', '🥉 Great Pick']
+RANK_CLASSES = ['gold', 'silver', 'bronze']
 
-cat_nav = "\n".join([f'  <a href="/en/{CAT_SLUGS.get(cn,"cat-other")}.html" class="cat-pill">{emoji} {CAT_EN.get(cn,cn)} ({len(ps)})</a>'
-    for cn, ps in list(cat_map.items())[:15]
-    for emoji in [ps[0]['emoji']]])
+def make_rank_card(i, p):
+    pname = en_name(p['name'])
+    cls = RANK_CLASSES[i]
+    label = RANK_LABELS[i]
+    stars_str = make_stars(p['score'])
+    tags_html = ''.join([f'\n            <span class="tag">{t(pro)}</span>' for pro in p['pros'][:3]])
+    amazon_q = quote_plus(pname)
+    return f'''      <div class="rank-card {cls}">
+        <div class="rank-badge-num"><span class="rank-num-text">{i+1}</span></div>
+        <div class="rank-thumb" style="background:linear-gradient(135deg,{p['bg']});">{p['emoji']}</div>
+        <div class="rank-info">
+          <div class="rank-label">{label}</div>
+          <div class="rank-name">{pname}</div>
+          <div class="rank-stars"><span class="stars">{stars_str}</span><span class="rating-val">{p['score']}</span><span class="rating-count">/ 5.0</span></div>
+          <div class="rank-tags">{tags_html}
+          </div>
+        </div>
+        <div class="rank-cta">
+          <div class="rank-price-label">Best Price on Amazon</div>
+          <div class="rank-price">{p['price']}</div>
+          <a href="https://www.amazon.co.jp/s?k={amazon_q}" class="btn-buy" target="_blank" rel="noopener">🛒 View on Amazon</a>
+          <a href="/en/{p['slug']}.html" class="btn-review-link">Read Full Review →</a>
+        </div>
+      </div>'''
 
-review_cards = "\n".join([f'''  <a href="/en/{p['slug']}.html" class="review-card">
-    <div class="review-thumb" style="background:linear-gradient(135deg,{p['bg'].split(',')[0].strip()},{p['bg'].split(',')[1].strip()})">
-      <span style="font-size:2.5rem;">{p['emoji']}</span>
-    </div>
-    <div class="review-body">
-      <span class="review-cat">{CAT_EN.get(p['cat'],p['cat'])}</span>
-      <h3 class="review-name">{p['name']}</h3>
-      <div class="review-score">★ {p['score']} / 5.0</div>
-      <div class="review-price">From {p['price']}</div>
-    </div>
-  </a>''' for p in sorted(PRODUCTS, key=lambda x: x['score'], reverse=True)[:24]])
+ranking_cards_html = '\n'.join([make_rank_card(i, p) for i, p in enumerate(top3)])
+
+def make_review_card(p):
+    pname = en_name(p['name'])
+    cat_en_str = CAT_EN.get(p['cat'], p['cat'])
+    desc = t(p['desc'])
+    desc_short = desc[:80] + '…' if len(desc) > 80 else desc
+    return f'''      <article class="review-card">
+        <div class="review-thumb" style="background:linear-gradient(135deg,{p['bg']});">{p['emoji']}</div>
+        <div class="review-body">
+          <div class="review-cat">{cat_en_str}</div>
+          <h3>{pname} Review</h3>
+          <p>{desc_short}</p>
+          <div class="review-footer"><div class="review-score"><span class="score-star">★</span><span class="score-num">{p['score']}</span></div><a href="/en/{p['slug']}.html" class="read-link">Read more →</a></div>
+        </div>
+      </article>'''
+
+review_cards_html = '\n'.join([make_review_card(p) for p in all_sorted])
 
 index_html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -108,14 +224,14 @@ index_html = f'''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <title>Best Gadgets 2026 — Rankings & Expert Reviews | GadgetNavi</title>
+  <title>Best Gadgets 2026 — Rankings &amp; Expert Reviews | GadgetNavi</title>
   <meta name="description" content="Expert reviews and rankings for smartphones, earbuds, smartwatches, laptops and more. {len(PRODUCTS)} products reviewed in 2026.">
   <link rel="canonical" href="{BASE_URL}en/">
   <link rel="alternate" hreflang="ja" href="{BASE_URL}">
   <link rel="alternate" hreflang="en" href="{BASE_URL}en/">
   <link rel="alternate" hreflang="x-default" href="{BASE_URL}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Best Gadgets 2026 — Rankings & Expert Reviews | GadgetNavi">
+  <meta property="og:title" content="Best Gadgets 2026 — Rankings &amp; Expert Reviews | GadgetNavi">
   <meta property="og:description" content="Expert reviews and rankings for {len(PRODUCTS)} gadgets.">
   <meta property="og:url" content="{BASE_URL}en/">
   <meta property="og:site_name" content="GadgetNavi">
@@ -129,84 +245,155 @@ index_html = f'''<!DOCTYPE html>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    body {{ font-family: 'Inter','Segoe UI',sans-serif; }}
-    .hero {{ background: linear-gradient(135deg, var(--secondary), #0f3460); color: #fff; padding: 60px 20px; text-align: center; }}
-    .hero h1 {{ font-size: clamp(1.6rem,4vw,2.8rem); font-weight: 900; margin-bottom: 12px; }}
-    .hero p {{ font-size: 1rem; color: rgba(255,255,255,0.75); margin-bottom: 28px; }}
-    .hero-stats {{ display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }}
-    .stat {{ text-align: center; }}
-    .stat-num {{ font-size: 2rem; font-weight: 900; color: var(--primary); }}
-    .stat-label {{ font-size: 0.8rem; color: rgba(255,255,255,0.6); }}
-    .section {{ max-width: 1100px; margin: 0 auto; padding: 48px 20px; }}
-    .section-title {{ font-size: 1.5rem; font-weight: 900; margin-bottom: 24px; }}
-    .cat-pills {{ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }}
-    .cat-pill {{ padding: 8px 16px; background: var(--white); border: 1px solid var(--border); border-radius: 50px; font-size: 0.85rem; text-decoration: none; color: var(--text); transition: all 0.2s; font-weight: 600; }}
-    .cat-pill:hover {{ background: var(--primary); color: #fff; border-color: var(--primary); }}
-    .rank-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }}
-    .rank-card {{ background: var(--white); border-radius: var(--radius); overflow: hidden; display: flex; text-decoration: none; box-shadow: var(--shadow-sm); transition: transform 0.2s; align-items: center; }}
-    .rank-card:hover {{ transform: translateY(-3px); }}
-    .rank-num {{ font-size: 1.5rem; font-weight: 900; color: var(--primary); padding: 0 16px; min-width: 50px; text-align: center; }}
-    .rank-thumb {{ width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }}
-    .rank-body {{ padding: 12px; flex: 1; }}
-    .rank-cat {{ font-size: 0.72rem; color: var(--text-muted); }}
-    .rank-name {{ font-size: 0.88rem; font-weight: 700; color: var(--text); line-height: 1.3; }}
-    .rank-score {{ font-size: 0.82rem; color: var(--primary); font-weight: 700; }}
-    .rank-price {{ font-size: 0.82rem; color: var(--text-muted); }}
-    .review-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }}
-    .review-card {{ background: var(--white); border-radius: var(--radius); overflow: hidden; text-decoration: none; box-shadow: var(--shadow-sm); transition: transform 0.2s; display: flex; flex-direction: column; }}
-    .review-card:hover {{ transform: translateY(-4px); }}
-    .review-thumb {{ height: 120px; display: flex; align-items: center; justify-content: center; }}
-    .review-body {{ padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 4px; }}
-    .review-cat {{ font-size: 0.72rem; color: var(--text-muted); }}
-    .review-name {{ font-size: 0.9rem; font-weight: 700; color: var(--text); line-height: 1.3; }}
-    .review-score {{ font-size: 0.83rem; color: var(--primary); font-weight: 700; }}
-    .review-price {{ font-size: 0.83rem; color: var(--text-muted); }}
-    .cta-band {{ background: linear-gradient(135deg, var(--primary), #ff8c42); color: #fff; padding: 40px 20px; text-align: center; }}
-    .cta-band h2 {{ font-size: 1.5rem; font-weight: 900; margin-bottom: 8px; }}
-    .cta-band p {{ color: rgba(255,255,255,0.8); margin-bottom: 20px; }}
-    .btn-white {{ display: inline-block; padding: 12px 32px; background: #fff; color: var(--primary); border-radius: 50px; font-weight: 800; text-decoration: none; }}
-  </style>
+  <style>body {{ font-family: 'Inter','Segoe UI',sans-serif; }}</style>
 </head>
 <body>
 {EN_HEADER}
 
-<div class="hero">
-  <h1>Find the Best Gadgets for 2026</h1>
-  <p>Expert reviews and rankings — no BS, just honest specs, scores & verdicts</p>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">{len(PRODUCTS)}</div><div class="stat-label">Products Reviewed</div></div>
-    <div class="stat"><div class="stat-num">{len(cat_map)}</div><div class="stat-label">Categories</div></div>
-    <div class="stat"><div class="stat-num">5.0</div><div class="stat-label">Max Score</div></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill">✦ Updated April 2026</div>
+    <h1>Find Your Perfect<br><em>Gadget.</em></h1>
+    <p>Smartphones, earbuds, smartwatches &amp; more —<br>specs, scores and honest verdicts</p>
+    <a href="#ranking" class="hero-cta">See Rankings ↓</a>
   </div>
-</div>
+</section>
 
-<div class="section" id="ranking">
-  <h2 class="section-title">Browse by Category</h2>
-  <div class="cat-pills">
-{cat_nav}
+<div class="with-sidebar">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-section">
+      <div class="sidebar-title">📋 Categories</div>
+      <ul class="sidebar-list">
+        <li><a href="/en/cat-smartphone.html">📱 Smartphones</a></li>
+        <li><a href="/en/cat-earphone.html">🎧 Wireless Earbuds</a></li>
+        <li><a href="/en/cat-smartwatch.html">⌚ Smartwatches</a></li>
+        <li><a href="/en/cat-laptop.html">💻 Laptops</a></li>
+        <li><a href="/en/cat-tablet.html">📟 Tablets</a></li>
+        <li><a href="/en/cat-camera.html">📷 Cameras</a></li>
+        <li><a href="/en/cat-gaming.html">🎮 Gaming</a></li>
+        <li><a href="/en/cat-monitor.html">🖥️ Monitors</a></li>
+        <li><a href="/en/cat-peripherals.html">🖱️ PC Peripherals</a></li>
+        <li><a href="/en/cat-charger.html">⚡ Chargers</a></li>
+        <li><a href="/en/cat-battery.html">🔋 Power Banks</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">🏠 Home Appliances</div>
+      <ul class="sidebar-list">
+        <li><a href="/en/cat-tv.html">📺 TVs</a></li>
+        <li><a href="/en/cat-robotvacuum.html">🤖 Robot Vacuums</a></li>
+        <li><a href="/en/cat-cordlessvacuum.html">🧹 Cordless Vacuums</a></li>
+        <li><a href="/en/cat-cooking.html">🍳 Kitchen Appliances</a></li>
+        <li><a href="/en/cat-coffee.html">☕ Coffee Makers</a></li>
+        <li><a href="/en/cat-dryer.html">💨 Hair Dryers</a></li>
+        <li><a href="/en/cat-toothbrush.html">🪥 Electric Toothbrushes</a></li>
+        <li><a href="/en/cat-shaver.html">🪒 Electric Shavers</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">🎵 AV &amp; Other</div>
+      <ul class="sidebar-list">
+        <li><a href="/en/cat-soundbar.html">🔊 Soundbars</a></li>
+        <li><a href="/en/cat-speaker2.html">🔊 Speakers</a></li>
+        <li><a href="/en/cat-projector.html">📽️ Projectors</a></li>
+        <li><a href="/en/cat-network.html">📡 Network Devices</a></li>
+        <li><a href="/en/cat-gamingchair.html">🪑 Gaming Chairs</a></li>
+        <li><a href="/en/cat-smarthome.html">💡 Smart Home</a></li>
+        <li><a href="/en/cat-vrar.html">🥽 VR/AR</a></li>
+        <li><a href="/en/cat-ereader.html">📖 E-Readers</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">🔗 Links</div>
+      <ul class="sidebar-list">
+        <li><a href="/en/faq.html">❓ FAQ</a></li>
+        <li><a href="/en/contact.html">✉️ Contact</a></li>
+        <li><a href="/en/privacy.html">🔒 Privacy Policy</a></li>
+      </ul>
+    </div>
   </div>
+</aside>
 
-  <h2 class="section-title">Top Ranked Gadgets</h2>
-  <div class="rank-grid">
-{ranking_cards}
+<div class="main-content">
+
+<section class="section" id="ranking">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">■ RANKING</div>
+      <h2>Top Gadget Rankings 2026</h2>
+      <p>Our expert picks based on specs, testing and user feedback</p>
+    </div>
+
+    <div class="ranking-list">
+{ranking_cards_html}
+    </div>
+
+    <div class="rank-see-more-wrap">
+      <a href="/en/cat-smartphone.html" class="rank-see-more">See All Smartphone Reviews →</a>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="cta-band">
-  <h2>Honest Reviews You Can Trust</h2>
-  <p>Our team tests every product and rates it across multiple criteria.</p>
-  <a href="/en/faq.html" class="btn-white">How We Review →</a>
-</div>
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">■ REVIEW</div>
+      <h2>All Reviews</h2>
+      <p>Specs, features and honest assessments for every product</p>
+    </div>
 
-<div class="section" id="reviews">
-  <h2 class="section-title">All Reviews</h2>
-  <div class="review-grid">
-{review_cards}
+    <div class="search-wrap">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by product name or category..." autocomplete="off">
+        <button class="search-clear" id="searchClear" aria-label="Clear">✕</button>
+      </div>
+      <div class="search-count" id="searchCount"></div>
+    </div>
+
+    <div class="reviews-grid" id="reviewsGrid">
+{review_cards_html}
+    </div>
   </div>
-</div>
+</section>
+
+</div><!-- main-content -->
+</div><!-- with-sidebar -->
 
 {EN_FOOTER}
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+<script>
+  const bttBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {{ bttBtn.classList.toggle('visible', window.scrollY > 400); }});
+  bttBtn.addEventListener('click', () => {{ window.scrollTo({{top:0,behavior:'smooth'}}); }});
+
+  const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
+  const searchCount = document.getElementById('searchCount');
+  const grid = document.getElementById('reviewsGrid');
+  const allCards = Array.from(grid.querySelectorAll('.review-card'));
+
+  function doSearch(q) {{
+    const kw = q.trim().toLowerCase();
+    searchClear.style.display = kw ? 'block' : 'none';
+    let shown = 0;
+    allCards.forEach(card => {{
+      const text = card.textContent.toLowerCase();
+      const match = !kw || text.includes(kw);
+      card.style.display = match ? '' : 'none';
+      if (match) shown++;
+    }});
+    searchCount.textContent = kw ? shown + ' results' : '';
+    searchCount.style.display = kw ? 'block' : 'none';
+  }}
+
+  searchInput.addEventListener('input', e => doSearch(e.target.value));
+  searchClear.addEventListener('click', () => {{ searchInput.value = ''; doSearch(''); searchInput.focus(); }});
+
+{HAMBURGER_JS}
+</script>
 </body>
 </html>'''
 
@@ -312,6 +499,7 @@ faq_html = f'''<!DOCTYPE html>
       ans.classList.toggle('open');
     }});
   }});
+{HAMBURGER_JS}
 </script>
 </body>
 </html>'''
@@ -377,6 +565,9 @@ contact_html = f'''<!DOCTYPE html>
 </div>
 </div>
 {EN_FOOTER}
+<script>
+{HAMBURGER_JS}
+</script>
 </body>
 </html>'''
 
@@ -449,6 +640,9 @@ privacy_html = f'''<!DOCTYPE html>
 </div>
 </div>
 {EN_FOOTER}
+<script>
+{HAMBURGER_JS}
+</script>
 </body>
 </html>'''
 
