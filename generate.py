@@ -1142,6 +1142,17 @@ for cat_name in cat_map:
 for p in PRODUCTS:
     sitemap_urls.append((f"{p['slug']}.html", today, "monthly", "0.8"))
 
+# EN pages
+sitemap_urls.append(("en/", today, "weekly", "0.9"))
+sitemap_urls.append(("en/privacy.html", "2026-04-01", "yearly", "0.3"))
+sitemap_urls.append(("en/faq.html", today, "monthly", "0.5"))
+sitemap_urls.append(("en/contact.html", today, "yearly", "0.2"))
+for cat_name in cat_map:
+    slug = CAT_SLUGS.get(cat_name, "cat-other")
+    sitemap_urls.append((f"en/{slug}.html", today, "weekly", "0.8"))
+for p in PRODUCTS:
+    sitemap_urls.append((f"en/{p['slug']}.html", today, "monthly", "0.7"))
+
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 for path, lastmod, freq, pri in sitemap_urls:
     sitemap += f'''  <url>
