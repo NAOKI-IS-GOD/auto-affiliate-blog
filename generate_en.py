@@ -289,7 +289,7 @@ EN_HEADER = '''<header>
       <a href="/en/privacy.html">Privacy</a>
     </nav>
     <div style="display:flex;align-items:center;gap:6px;">
-      <a href="/" class="lang-btn">🇯🇵 JA</a>
+      <a href="/" class="lang-btn" onclick="localStorage.setItem('gadgetnavi_lang','ja')">🇯🇵 JA</a>
       <span class="lang-btn active">🇬🇧 EN</span>
     </div>
   </div>
@@ -495,7 +495,7 @@ def generate_en_review(p):
         <div class="author"><div class="avatar">👤</div><span>GadgetNavi Editorial</span></div>
         <span>📅 April 5, 2026</span>
         <span>🕐 6 min read</span>
-        <a href="{BASE_URL}{p["slug"]}.html" style="color:var(--primary);font-size:0.8rem;">🇯🇵 JP</a>
+        <a href="{BASE_URL}{p["slug"]}.html" style="color:var(--primary);font-size:0.8rem;" onclick="localStorage.setItem('gadgetnavi_lang','ja')">🇯🇵 JP</a>
       </div>
     </div>
 

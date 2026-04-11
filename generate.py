@@ -582,6 +582,7 @@ def generate_html(p):
     return f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
+  <script>!function(){{if(location.pathname.startsWith('/en/'))return;if(localStorage.getItem('gadgetnavi_lang')==='ja')return;var l=(navigator.language||'').toLowerCase();if(l==='en'||l.startsWith('en-')){{localStorage.setItem('gadgetnavi_lang','en');location.replace('/en'+location.pathname+location.search);}}}}();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
@@ -754,7 +755,7 @@ def generate_html(p):
     </nav>
     <div style="display:flex;align-items:center;gap:6px;">
       <span class="lang-btn active">🇯🇵 JA</span>
-      <a href="/en/{p["slug"]}.html" class="lang-btn">🇬🇧 EN</a>
+      <a href="/en/{p["slug"]}.html" class="lang-btn" onclick="localStorage.setItem('gadgetnavi_lang','en')">🇬🇧 EN</a>
     </div>
   </div>
 </header>
@@ -971,6 +972,7 @@ def generate_category_html(cat_name, products):
     return f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
+  <script>!function(){{if(location.pathname.startsWith('/en/'))return;if(localStorage.getItem('gadgetnavi_lang')==='ja')return;var l=(navigator.language||'').toLowerCase();if(l==='en'||l.startsWith('en-')){{localStorage.setItem('gadgetnavi_lang','en');location.replace('/en'+location.pathname+location.search);}}}}();</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2054301472533985" crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERDKSGNEWS"></script>
@@ -1055,7 +1057,7 @@ def generate_category_html(cat_name, products):
     </nav>
     <div style="display:flex;align-items:center;gap:6px;">
       <span class="lang-btn active">🇯🇵 JA</span>
-      <a href="/en/{slug}.html" class="lang-btn">🇬🇧 EN</a>
+      <a href="/en/{slug}.html" class="lang-btn" onclick="localStorage.setItem('gadgetnavi_lang','en')">🇬🇧 EN</a>
     </div>
   </div>
 </header>
@@ -1171,6 +1173,7 @@ for cat_name, prods in sorted(cat_map.items(), key=lambda x: -len(x[1])):
 sitemap_page = f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
+  <script>!function(){{if(location.pathname.startsWith('/en/'))return;if(localStorage.getItem('gadgetnavi_lang')==='ja')return;var l=(navigator.language||'').toLowerCase();if(l==='en'||l.startsWith('en-')){{localStorage.setItem('gadgetnavi_lang','en');location.replace('/en'+location.pathname+location.search);}}}}();</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2054301472533985" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERDKSGNEWS"></script>
   <script>
@@ -1220,7 +1223,7 @@ sitemap_page = f'''<!DOCTYPE html>
     </nav>
     <div style="display:flex;align-items:center;gap:6px;">
       <span class="lang-btn active">🇯🇵 JA</span>
-      <a href="/en/" class="lang-btn">🇬🇧 EN</a>
+      <a href="/en/" class="lang-btn" onclick="localStorage.setItem('gadgetnavi_lang','en')">🇬🇧 EN</a>
     </div>
   </div>
 </header>
