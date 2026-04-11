@@ -43,6 +43,8 @@ for i, p in enumerate(PRODUCTS):
     slug = p['slug']
     print(f"[{i+1}/{total}] {p['name']}")
 
+    # name: skip (handled by regex in generate_en.py)
+
     # desc
     translate(p['desc'])
 

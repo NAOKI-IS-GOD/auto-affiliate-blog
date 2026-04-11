@@ -149,6 +149,24 @@ EN_EXTRA_STYLE = """
     }
 """
 
+import re as _re
+
+def en_name(name):
+    """Replace Japanese parts in product names with English equivalents."""
+    r = name
+    r = _re.sub(r'（第(\d+)世代）', lambda m: f' ({_ordinal(int(m.group(1)))} Gen)', r)
+    r = r.replace('インチ', '-inch').replace('ボディ', 'Body').replace('（ボディ）', ' (Body)')
+    r = r.replace('（', ' (').replace('）', ')')
+    r = r.replace('万画素', 'MP').replace('枚刃', '-blade')
+    r = r.replace('ラムダッシュ', 'Lamdash').replace('ビストロ', 'Bistro')
+    r = r.replace('ナノケア', 'NanoCare').replace('ドルツ', 'Doltz')
+    r = r.replace('ヒーシオ', 'Healsio').replace('ヘルシオ', 'Healsio')
+    r = _re.sub(r'\s+', ' ', r).strip()
+    return r
+
+def _ordinal(n):
+    return {1:'1st',2:'2nd',3:'3rd'}.get(n, f'{n}th')
+
 def get_en_score_label(label):
     return SCORE_EN.get(label, label)
 
@@ -209,6 +227,7 @@ EN_FOOTER = '''<footer>
 </footer>'''
 
 def generate_en_review(p):
+    pname = en_name(p['name'])
     cat_en = CAT_EN.get(p['cat'], p['cat'])
     cat_slug = CAT_SLUGS.get(p['cat'], 'cat-other')
     brand = get_brand(p['name'])
@@ -237,7 +256,7 @@ def generate_en_review(p):
         f'''        <a href="/en/{slug}.html" class="related-card">
           <div class="related-thumb">{emoji}</div>
           <div class="related-cat">{CAT_EN.get(cat, cat)}</div>
-          <div class="related-title">{title.replace(" レビュー", " Review").replace("レビュー", "Review")}</div>
+          <div class="related-title">{en_name(title.replace(" レビュー", "").replace("レビュー", ""))} Review</div>
           <div class="related-score"><span>★</span> {score} / 5.0</div>
         </a>''' for slug, emoji, cat, title, score in p['related']
     ])
@@ -245,7 +264,7 @@ def generate_en_review(p):
     # Use translated description, fallback to auto-generated
     en_desc_translated = t(p['desc'])
     top_score = max(p['scores'], key=lambda x: x[2])
-    en_desc_auto = (f"The {p['name']} is a top-rated {cat_en} from {brand}, "
+    en_desc_auto = (f"The {pname} is a top-rated {cat_en} from {brand}, "
                     f"scoring {p['score']}/5.0. "
                     f"Particularly outstanding in {get_en_score_label(top_score[0])} ({top_score[2]}/5.0).")
     en_desc = en_desc_translated if en_desc_translated != p['desc'] else en_desc_auto
@@ -259,15 +278,15 @@ def generate_en_review(p):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <title>{p["name"]} Review [2026] Specs & Verdict | GadgetNavi</title>
-  <meta name="description" content="{p["name"]} review: specs, features, pros & cons. Expert score {p["score"]}/5.0. Best {cat_en} pick for 2026?">
+  <title>{pname} Review [2026] Specs & Verdict | GadgetNavi</title>
+  <meta name="description" content="{pname} review: specs, features, pros & cons. Expert score {p["score"]}/5.0. Best {cat_en} pick for 2026?">
   <link rel="canonical" href="{BASE_URL}en/{p["slug"]}.html">
   <link rel="alternate" hreflang="ja" href="{BASE_URL}{p["slug"]}.html">
   <link rel="alternate" hreflang="en" href="{BASE_URL}en/{p["slug"]}.html">
   <link rel="alternate" hreflang="x-default" href="{BASE_URL}{p["slug"]}.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="{p["name"]} Review [2026] | GadgetNavi">
-  <meta property="og:description" content="Expert review of {p["name"]}. Score: {p["score"]}/5.0.">
+  <meta property="og:title" content="{pname} Review [2026] | GadgetNavi">
+  <meta property="og:description" content="Expert review of {pname}. Score: {p["score"]}/5.0.">
   <meta property="og:url" content="{BASE_URL}en/{p["slug"]}.html">
   <meta property="og:site_name" content="GadgetNavi">
   <meta property="og:image" content="{BASE_URL}ogp-default.svg">
@@ -276,7 +295,7 @@ def generate_en_review(p):
   {{
     "@context": "https://schema.org",
     "@type": "Review",
-    "name": "{p["name"]} Review [2026]",
+    "name": "{pname} Review [2026]",
     "author": {{ "@type": "Organization", "name": "GadgetNavi Editorial" }},
     "datePublished": "2026-04-05",
     "dateModified": "{TODAY}",
@@ -289,7 +308,7 @@ def generate_en_review(p):
     }},
     "itemReviewed": {{
       "@type": "Product",
-      "name": "{p["name"]}",
+      "name": "{pname}",
       "description": "{en_desc}",
       "image": "{BASE_URL}favicon.svg",
       "brand": {{ "@type": "Brand", "name": "{brand}" }},
@@ -336,23 +355,23 @@ def generate_en_review(p):
     "mainEntity": [
       {{
         "@type": "Question",
-        "name": "What are the pros of the {p["name"]}?",
+        "name": "What are the pros of the {pname}?",
         "acceptedAnswer": {{ "@type": "Answer", "text": "{pros_faq}" }}
       }},
       {{
         "@type": "Question",
-        "name": "What are the cons of the {p["name"]}?",
+        "name": "What are the cons of the {pname}?",
         "acceptedAnswer": {{ "@type": "Answer", "text": "{cons_faq}" }}
       }},
       {{
         "@type": "Question",
-        "name": "What is the price of the {p["name"]}?",
-        "acceptedAnswer": {{ "@type": "Answer", "text": "The {p["name"]} is priced from {p["price"]} (JPY) on Amazon Japan." }}
+        "name": "What is the price of the {pname}?",
+        "acceptedAnswer": {{ "@type": "Answer", "text": "The {pname} is priced from {p["price"]} (JPY) on Amazon Japan." }}
       }},
       {{
         "@type": "Question",
-        "name": "Is the {p["name"]} worth buying?",
-        "acceptedAnswer": {{ "@type": "Answer", "text": "GadgetNavi rates the {p["name"]} {p["score"]}/5.0. {en_desc}" }}
+        "name": "Is the {pname} worth buying?",
+        "acceptedAnswer": {{ "@type": "Answer", "text": "GadgetNavi rates the {pname} {p["score"]}/5.0. {en_desc}" }}
       }}
     ]
   }}
@@ -376,7 +395,7 @@ def generate_en_review(p):
     <div class="breadcrumb">
       <a href="/en/">Home</a><span>›</span>
       <a href="/en/{cat_slug}.html">{cat_en}</a><span>›</span>
-      {p["name"]} Review
+      {pname} Review
     </div>
   </div>
 </div>
@@ -386,7 +405,7 @@ def generate_en_review(p):
 
     <div class="article-header">
       <div class="article-category">{p["emoji"]} {cat_en}</div>
-      <h1>[2026] {p["name"]} Review — Specs, Features & Verdict</h1>
+      <h1>[2026] {pname} Review — Specs, Features & Verdict</h1>
       <div class="article-meta">
         <div class="author"><div class="avatar">👤</div><span>GadgetNavi Editorial</span></div>
         <span>📅 April 5, 2026</span>
@@ -414,7 +433,7 @@ def generate_en_review(p):
     </div>
 
     <div class="affiliate-box">
-      <div class="prod-name">{p["emoji"]} {p["name"]}</div>
+      <div class="prod-name">{p["emoji"]} {pname}</div>
       <div class="prod-price">From {p["price"]}</div>
       <div class="affiliate-btns">
         <a href="{amazon_url}" class="btn-amazon" target="_blank" rel="noopener">🛒 Buy on Amazon Japan</a>
@@ -426,10 +445,10 @@ def generate_en_review(p):
     <div class="article-body">
 
       <div class="info-box">
-        📌 This review covers the {p["name"]} — specs, key features, pros & cons, and our expert verdict to help you decide before buying.
+        📌 This review covers the {pname} — specs, key features, pros & cons, and our expert verdict to help you decide before buying.
       </div>
 
-      <h2>Key Features of the {p["name"]}</h2>
+      <h2>Key Features of the {pname}</h2>
       <p>{en_desc}</p>
       <p>In our testing, the standout feature was <strong>{en_pros[0]}</strong>. On the downside, <strong>{en_cons[0]}</strong> is worth keeping in mind before purchasing.</p>
 
@@ -471,7 +490,7 @@ def generate_en_review(p):
     <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
 
     <div class="affiliate-box" style="margin-top:40px;">
-      <div class="prod-name">{p["emoji"]} {p["name"]}</div>
+      <div class="prod-name">{p["emoji"]} {pname}</div>
       <div class="prod-price">From {p["price"]}</div>
       <div class="affiliate-btns">
         <a href="{amazon_url}" class="btn-amazon" target="_blank" rel="noopener">🛒 Buy on Amazon Japan</a>
@@ -515,7 +534,7 @@ def generate_en_category(cat_name, products):
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;">{p['emoji']}</div>
         </div>
         <div class="cat-card-body">
-          <div class="cat-card-name">{p['name']}</div>
+          <div class="cat-card-name">{en_name(p['name'])}</div>
           <div class="cat-card-score">★ {p['score']} / 5.0</div>
           <div class="cat-card-price">From {p['price']}</div>
           <div class="cat-card-desc">{t(p['desc'])[:80]}…</div>
