@@ -1,61 +1,35 @@
 # -*- coding: utf-8 -*-
-import os
+import os, sys
 
 # Slugs extracted from the project directory
 SLUGS = [
-    "compare-applewatchs10-vs-applewatchultra2",
-    "compare-applewatchs10-vs-galaxywatch7",
-    "compare-applewatchultra2-vs-garminfenix8",
-    "compare-asusrogzephyrusg14-vs-razerblade15",
-    "compare-boseSoundLinkMax-vs-marshallEmberton3",
-    "compare-dellu2723d-vs-benqpd3205u",
-    "compare-dreameX40ultra-vs-ecovacsX5pro",
-    "compare-fujifilmxt5-vs-sonya7cii",
-    "compare-galaxya55-vs-nothingphone3a",
-    "compare-galaxybuds3pro-vs-sonywf1000xm5",
-    "compare-galaxys25ultra-vs-xiaomi14ultra",
-    "compare-garminfenix8-vs-garminvenu3",
-    "compare-goprohero12-vs-djiosmoaction4",
-    "compare-insta360x4-vs-goprohero12",
-    "compare-ipadairm2-vs-ipadprom4",
-    "compare-ipadmini7-vs-kindlepaperwhite",
-    "compare-ipadprom4-vs-galaxytabs10ultra",
-    "compare-iphone16-vs-galaxy-s25",
-    "compare-iphone16-vs-pixel9a",
-    "compare-iphone16plus-vs-galaxys25plus",
-    "compare-iphone16promax-vs-galaxys25ultra",
-    "compare-iphone16promax-vs-pixel9pro",
-    "compare-iphonese4-vs-nothingphone3a",
-    "compare-iroombaj9plus-vs-eufyrobovacx8",
-    "compare-jblflip6-vs-boseSoundLinkMax",
-    "compare-jbltourpro3-vs-sonywf1000xm5",
-    "compare-lg27gp850b-vs-asusrogswiftpg279qm",
-    "compare-lg45gr95qeb-vs-samsungodysseyg7",
-    "compare-macbookairm3-vs-dellxps15",
-    "compare-macbookairm3-vs-macbookprom4pro",
-    "compare-macbookairm3-vs-surfacepro11",
-    "compare-nintendoswitch2-vs-ps5slim",
-    "compare-nintendoswitch2-vs-xboxseriesx",
-    "compare-nothingear2-vs-ankerliberty4nc",
-    "compare-oneplus13-vs-xiaomi15",
-    "compare-oppofindx8pro-vs-xiaomi14ultra",
-    "compare-pixel9a-vs-iphonese4",
-    "compare-pixelwatch3-vs-galaxywatch7",
-    "compare-ps5slim-vs-xboxseriesx",
-    "compare-roborocks8maxv-vs-dreameX40ultra",
-    "compare-samsungodysseyg7-vs-lg27gp850b",
-    "compare-sennheisermomentum4-vs-boseqcearbuds2",
-    "compare-sonywf1000xm5-vs-boseqcearbuds2",
-    "compare-sonywf1000xm5-vs-technicseahaz80",
-    "compare-sonywh1000xm5-vs-boseqc45",
-    "compare-sonyzve10ii-vs-canoneosr50",
-    "compare-surfacepro11-vs-ipadprom4",
-    "compare-technicseahaz80-vs-boseqcearbuds2",
-    "compare-thinkpadx1carbon-vs-dellxps15",
-    "compare-xperia1vi-vs-galaxy-s25",
+    "compare-applewatchs10-vs-applewatchultra2", "compare-applewatchs10-vs-galaxywatch7",
+    "compare-applewatchultra2-vs-garminfenix8", "compare-asusrogzephyrusg14-vs-razerblade15",
+    "compare-boseSoundLinkMax-vs-marshallEmberton3", "compare-dellu2723d-vs-benqpd3205u",
+    "compare-dreameX40ultra-vs-ecovacsX5pro", "compare-fujifilmxt5-vs-sonya7cii",
+    "compare-galaxya55-vs-nothingphone3a", "compare-galaxybuds3pro-vs-sonywf1000xm5",
+    "compare-galaxys25ultra-vs-xiaomi14ultra", "compare-garminfenix8-vs-garminvenu3",
+    "compare-goprohero12-vs-djiosmoaction4", "compare-insta360x4-vs-goprohero12",
+    "compare-ipadairm2-vs-ipadprom4", "compare-ipadmini7-vs-kindlepaperwhite",
+    "compare-ipadprom4-vs-galaxytabs10ultra", "compare-iphone16-vs-galaxy-s25",
+    "compare-iphone16-vs-pixel9a", "compare-iphone16plus-vs-galaxys25plus",
+    "compare-iphone16promax-vs-galaxys25ultra", "compare-iphone16promax-vs-pixel9pro",
+    "compare-iphonese4-vs-nothingphone3a", "compare-iroombaj9plus-vs-eufyrobovacx8",
+    "compare-jblflip6-vs-boseSoundLinkMax", "compare-jbltourpro3-vs-sonywf1000xm5",
+    "compare-lg27gp850b-vs-asusrogswiftpg279qm", "compare-lg45gr95qeb-vs-samsungodysseyg7",
+    "compare-macbookairm3-vs-dellxps15", "compare-macbookairm3-vs-macbookprom4pro",
+    "compare-macbookairm3-vs-surfacepro11", "compare-nintendoswitch2-vs-ps5slim",
+    "compare-nintendoswitch2-vs-xboxseriesx", "compare-nothingear2-vs-ankerliberty4nc",
+    "compare-oneplus13-vs-xiaomi15", "compare-oppofindx8pro-vs-xiaomi14ultra",
+    "compare-pixel9a-vs-iphonese4", "compare-pixelwatch3-vs-galaxywatch7",
+    "compare-ps5slim-vs-xboxseriesx", "compare-roborocks8maxv-vs-dreameX40ultra",
+    "compare-samsungodysseyg7-vs-lg27gp850b", "compare-sennheisermomentum4-vs-boseqcearbuds2",
+    "compare-sonywf1000xm5-vs-boseqcearbuds2", "compare-sonywf1000xm5-vs-technicseahaz80",
+    "compare-sonywh1000xm5-vs-boseqc45", "compare-sonyzve10ii-vs-canoneosr50",
+    "compare-surfacepro11-vs-ipadprom4", "compare-technicseahaz80-vs-boseqcearbuds2",
+    "compare-thinkpadx1carbon-vs-dellxps15", "compare-xperia1vi-vs-galaxy-s25",
 ]
 
-# Map slug parts to full names and categories
 MAPPING = {
     "iphone16promax": ("iPhone 16 Pro Max", "スマートフォン", "Smartphone", "📱"),
     "galaxys25ultra": ("Galaxy S25 Ultra", "スマートフォン", "Smartphone", "📱"),
@@ -128,54 +102,61 @@ MAPPING = {
     "galaxy-s25": ("Galaxy S25", "スマートフォン", "Smartphone", "📱"),
 }
 
+# Fix import order
+sys.path.append(r'C:\Users\81804\OneDrive\デスクトップ\auto-affiliate-blog-main')
+from _v2_gen import SP
+
 def get_mapping(slug_part):
     return MAPPING.get(slug_part, (slug_part, "その他", "Other", "📦"))
 
 COMPARISONS = []
-
 for slug in SLUGS:
     parts = slug.replace("compare-", "").split("-vs-")
-    a_part = parts[0]
-    b_part = parts[1]
-    
+    a_part, b_part = parts[0], parts[1]
     a_name, cat, cat_en, emoji = get_mapping(a_part)
     b_name, _, _, _ = get_mapping(b_part)
-    
-    # Simple logic for backgrounds
     bg = "#000,#333" if cat == "スマートフォン" else "#222,#555"
     if cat == "ゲーム機": bg = "#555,#888"
     if cat == "カメラ": bg = "#777,#aaa"
     
-    entry = {
-        "slug": slug,
-        "cat": cat, "cat_en": cat_en, "emoji": emoji, "bg": bg,
+    def get_pros(name):
+        s = SP.get(name, [""]*13)
+        p = []
+        if s[2]: p.append(f"{s[2]}による圧倒的パワー")
+        if "MP" in s[5]: p.append(f"{s[5]}の高解像度カメラ")
+        if "mAh" in s[6]: p.append(f"{s[6]}の大容量バッテリー")
+        if "g" in s[8]: p.append(f"{s[8]}の取り回しやすい重量")
+        if "Hz" in s[1]: p.append(f"{s[1]}の滑らかな表示")
+        if "Pa" in s[5]: p.append(f"{s[5]}の超強力な吸引力")
+        return (p + ["洗練されたデザイン", "高いブランド信頼性"])[:3]
+
+    def get_cons(name):
+        s = SP.get(name, [""]*13)
+        c = []
+        try:
+            if "¥" in s[11] and int(s[11].replace("¥","").replace(",","").replace("〜","")) > 150000: c.append("非常に高価な価格設定")
+        except: pass
+        if "g" in s[8] and int(s[8].replace("g","")) > 210: c.append(f"{s[8]}とやや重いボディ")
+        if "60Hz" in s[1]: c.append("リフレッシュレートが60Hz制限")
+        return (c + ["アクセサリが別売り", "競合より充電が遅め"])[:2]
+
+    pa, ca, pb, cb = get_pros(a_name), get_cons(a_name), get_pros(b_name), get_cons(b_name)
+    COMPARISONS.append({
+        "slug": slug, "cat": cat, "cat_en": cat_en, "emoji": emoji, "bg": bg,
         "a": {"name": a_name, "score": 4.8, "slug": f"review-{a_part}"},
         "b": {"name": b_name, "score": 4.7, "slug": f"review-{b_part}"},
-        "verdict_ja": f"{a_name}と{b_name}の徹底比較。あなたのライフスタイルに合うのはどっち？",
-        "verdict_en": f"Comprehensive comparison of {a_name} and {b_name}. Which one fits your lifestyle?",
-        "summary_ja": f"2026年最新の{cat}比較。両者のスペック、デザイン、使い勝手の違いを詳細に解説します。",
-        "summary_en": f"In-depth {cat_en} comparison. We analyze specs, design, and usability differences between the two.",
-        "pa": ["優れたパフォーマンス", "洗練されたデザイン", "高い信頼性"],
-        "ca": ["価格がやや高め", "サイズが大きい"],
-        "pa_en": ["Excellent performance", "Sleek design", "High reliability"],
-        "ca_en": ["Relatively expensive", "Large physical footprint"],
-        "pb": ["多機能で使いやすい", "美しいディスプレイ", "充実のサポート"],
-        "cb": ["バッテリー持ちが改善の余地あり", "一部の機能が限定的"],
-        "pb_en": ["Feature-rich and user-friendly", "Beautiful display", "Excellent support"],
-        "cb_en": ["Battery life could be better", "Certain features are limited"],
-        "wa": "最高峰の性能とブランド力を求めるユーザー",
-        "wa_en": "Users seeking peak performance and brand prestige",
-        "wb": "コストパフォーマンスと実用的な機能を重視するユーザー",
-        "wb_en": "Users prioritizing value and practical features",
-    }
-    COMPARISONS.append(entry)
+        "verdict_ja": f"{a_name}は性能、{b_name}はバランス。あなたの用途で選ぶのが正解。",
+        "verdict_en": f"{a_name} for performance, {b_name} for balance. Choose based on your needs.",
+        "summary_ja": f"{a_name}の{get_pros(a_name)[0]}と、{b_name}の{get_pros(b_name)[0]}を比較。2026年最新の{cat}選びをサポート。",
+        "summary_en": f"Comparing {a_name}'s {get_pros(a_name)[0]} vs {b_name}'s {get_pros(b_name)[0]}. The ultimate {cat_en} guide.",
+        "pa": pa, "ca": ca, "pa_en": ["High performance", "Premium build", "Reliable quality"], "ca_en": ["Premium price", "Slightly bulky"],
+        "pb": pb, "cb": cb, "pb_en": ["Feature-rich", "Great display", "Strong support"], "cb_en": ["Battery life", "Limited customization"],
+        "wa": f"{a_name}の性能を最大限活かしたいプロユーザー", "wa_en": "Power users who want to maximize performance",
+        "wb": f"{b_name}の安定感と使い勝手を重視する一般ユーザー", "wb_en": "Mainstream users who value stability and ease of use",
+    })
 
-# Write to _v2_data.py
-import reprlib
-with open('C:/Users/81804/OneDrive/デスクトップ/auto-affiliate-blog-main/_v2_data.py', 'w', encoding='utf-8') as f:
+with open(os.path.join(r'C:\Users\81804\OneDrive\デスクトップ\auto-affiliate-blog-main', '_v2_data.py'), 'w', encoding='utf-8') as f:
     f.write("# -*- coding: utf-8 -*-\nCOMPARISONS = [\n")
-    for c in COMPARISONS:
-        f.write(f"    {repr(c)},\n")
+    for c in COMPARISONS: f.write(f"    {repr(c)},\n")
     f.write("]\n")
-
-print(f"Generated {len(COMPARISONS)} entries in _v2_data.py")
+print(f"Generated {len(COMPARISONS)} entries.")

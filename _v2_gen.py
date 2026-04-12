@@ -6,6 +6,7 @@ Run:  python _v2_gen.py
 """
 import pathlib, re
 from urllib.parse import quote_plus
+from config import AMZ_URL, RKT_URL
 
 BASE  = pathlib.Path(r"C:\Users\81804\OneDrive\デスクトップ\auto-affiliate-blog-main")
 EN    = BASE / "en"
@@ -737,10 +738,10 @@ def gen_page(c, lang="ja"):
     bg1, bg2 = c["bg"].split(",")
     sba = int(a["score"] / 5 * 100)
     sbb = int(b["score"] / 5 * 100)
-    amz_a = f"https://www.amazon.co.jp/s?k={quote_plus(a['name'])}"
-    amz_b = f"https://www.amazon.co.jp/s?k={quote_plus(b['name'])}"
-    rkt_a = f"https://search.rakuten.co.jp/search/mall/{quote_plus(a['name'])}/"
-    rkt_b = f"https://search.rakuten.co.jp/search/mall/{quote_plus(b['name'])}/"
+    amz_a = AMZ_URL.format(kw=quote_plus(a['name']))
+    amz_b = AMZ_URL.format(kw=quote_plus(b['name']))
+    rkt_a = RKT_URL.format(kw=quote_plus(a['name']))
+    rkt_b = RKT_URL.format(kw=quote_plus(b['name']))
     cat_page = CAT_SLUG.get(c["cat"], "index.html")
 
     if is_en:
