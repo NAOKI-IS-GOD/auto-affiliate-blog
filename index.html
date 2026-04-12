@@ -1339,6 +1339,11 @@
 </div><!-- /with-sidebar -->
 
 <!-- Compare -->
+
+
+
+
+<!-- Features -->
 <section class="section" id="rank" style="background:#fff">
   <div class="container">
     <div class="section-header">
@@ -1346,162 +1351,225 @@
       <h2>最新おすすめランキング</h2>
       <p>各カテゴリーの頂点を決める、忖度なしの厳選ベストバイ。</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
-      <a href="/rank-smartphone.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">📱</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">スマートフォン</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+    <div class="cat-rank-grid">
+      <a href="/rank-smartphone.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">📱</span>
+        <div class="cat-rank-name">スマートフォン</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-earphone.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">🎧</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">イヤホン</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-earphone.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">🎧</span>
+        <div class="cat-rank-name">イヤホン</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-smartwatch.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">⌚</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">スマートウォッチ</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-smartwatch.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">⌚</span>
+        <div class="cat-rank-name">スマートウォッチ</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-tablet.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">📟</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">タブレット</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-tablet.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">📟</span>
+        <div class="cat-rank-name">タブレット</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-laptop.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">💻</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">ノートPC</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-laptop.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">💻</span>
+        <div class="cat-rank-name">ノートPC</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-gaming.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">🎮</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">ゲーム機</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-gaming.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">🎮</span>
+        <div class="cat-rank-name">ゲーム機</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-monitor.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">🖥️</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">モニター</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-monitor.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">🖥️</span>
+        <div class="cat-rank-name">モニター</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-camera.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">📷</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">カメラ</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-camera.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">📷</span>
+        <div class="cat-rank-name">カメラ</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-robotvacuum.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">🤖</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">ロボット掃除機</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-robotvacuum.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">🤖</span>
+        <div class="cat-rank-name">ロボット掃除機</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
-      <a href="/rank-speaker.html" style="display:block;padding:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;text-align:center;text-decoration:none;transition:.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none'">
-        <div style="font-size:2.5rem;margin-bottom:12px;">🔊</div>
-        <div style="font-weight:900;color:var(--secondary);font-size:0.9rem;">スピーカー</div>
-        <div style="font-size:0.7rem;color:var(--primary);margin-top:4px;font-weight:700;">ランキングを見る →</div>
+      <a href="/rank-speaker.html" class="cat-rank-card">
+        <span class="cat-rank-emoji">🔊</span>
+        <div class="cat-rank-name">スピーカー</div>
+        <div class="cat-rank-link">ランキングを見る →</div>
       </a>
     </div>
   </div>
 </section>
-
-<section class="section" id="compare">
+<section class="section" id="compare" style="background:#f9f9f9">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">&#9632; COMPARE</div>
-      <h2>製品比較ガイド</h2>
-      <p>迷ったらここで比較。どちらを買うべきか2026年版で徹底解説</p>
+      <div class="section-label">■ COMPARE</div>
+      <h2>比較記事</h2>
+      <p>2026年最新ガジェットを徹底比較。後悔しない選び方を提案。</p>
     </div>
-    <style>
-      .cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:16px}
-      .cmp-cat{font-size:.8rem;font-weight:800;color:var(--text-light);letter-spacing:.12em;text-transform:uppercase;margin:20px 0 8px;padding-left:2px}
-      .cmp-card{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;transition:border-color .2s,box-shadow .2s;text-decoration:none;color:inherit}
-      .cmp-card:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(0,0,0,.08)}
-      .cmp-emo{font-size:1.6rem;flex-shrink:0}
-      .cmp-names{font-size:.85rem;font-weight:700;line-height:1.4;flex:1}
-      .cmp-vs{color:var(--primary);font-weight:900;margin:0 2px}
-      .cmp-sc{font-size:.75rem;color:var(--text-light);white-space:nowrap}
-    </style>
-    <div class="cmp-cat">📱 スマートフォン</div>
     <div class="cmp-grid">
-      <a href="/compare-iphone16promax-vs-galaxys25ultra.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">iPhone 16 Pro Max <span class="cmp-vs">vs</span> Galaxy S25 Ultra</div><span class="cmp-sc">4.9&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-iphone16-vs-pixel9a.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">iPhone 16 <span class="cmp-vs">vs</span> Pixel 9a</div><span class="cmp-sc">4.4&#9733; vs 4.4&#9733;</span></a>
-      <a href="/compare-iphone16-vs-galaxy-s25.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">iPhone 16 <span class="cmp-vs">vs</span> Galaxy S25</div><span class="cmp-sc">4.4&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-iphonese4-vs-nothingphone3a.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">iPhone SE4 <span class="cmp-vs">vs</span> Nothing Phone 3a</div><span class="cmp-sc">4.3&#9733; vs 4.2&#9733;</span></a>
-      <a href="/compare-iphone16promax-vs-pixel9pro.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">iPhone 16 Pro Max <span class="cmp-vs">vs</span> Pixel 9 Pro</div><span class="cmp-sc">4.9&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-galaxys25ultra-vs-xiaomi14ultra.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">Galaxy S25 Ultra <span class="cmp-vs">vs</span> Xiaomi 14 Ultra</div><span class="cmp-sc">4.7&#9733; vs 4.5&#9733;</span></a>
-      <a href="/compare-xperia1vi-vs-galaxy-s25.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">Xperia 1 VI <span class="cmp-vs">vs</span> Galaxy S25</div><span class="cmp-sc">4.4&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-oneplus13-vs-xiaomi15.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">OnePlus 13 <span class="cmp-vs">vs</span> Xiaomi 15</div><span class="cmp-sc">4.4&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-pixel9a-vs-iphonese4.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">Pixel 9a <span class="cmp-vs">vs</span> iPhone SE4</div><span class="cmp-sc">4.4&#9733; vs 4.3&#9733;</span></a>
-      <a href="/compare-iphone16plus-vs-galaxys25plus.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">iPhone 16 Plus <span class="cmp-vs">vs</span> Galaxy S25+</div><span class="cmp-sc">4.5&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-oppofindx8pro-vs-xiaomi14ultra.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">OPPO Find X8 Pro <span class="cmp-vs">vs</span> Xiaomi 14 Ultra</div><span class="cmp-sc">4.3&#9733; vs 4.5&#9733;</span></a>
-      <a href="/compare-galaxya55-vs-nothingphone3a.html" class="cmp-card"><span class="cmp-emo">📱</span><div class="cmp-names">Galaxy A55 <span class="cmp-vs">vs</span> Nothing Phone 3a</div><span class="cmp-sc">4.1&#9733; vs 4.2&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">🎧 イヤホン</div>
-    <div class="cmp-grid">
-      <a href="/compare-sonywf1000xm5-vs-boseqcearbuds2.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Sony WF-1000XM5 <span class="cmp-vs">vs</span> Bose QC Earbuds II</div><span class="cmp-sc">4.7&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-sonywf1000xm5-vs-technicseahaz80.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Sony WF-1000XM5 <span class="cmp-vs">vs</span> Technics EAH-AZ80</div><span class="cmp-sc">4.7&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-galaxybuds3pro-vs-sonywf1000xm5.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Galaxy Buds 3 Pro <span class="cmp-vs">vs</span> Sony WF-1000XM5</div><span class="cmp-sc">4.5&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-jbltourpro3-vs-sonywf1000xm5.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">JBL Tour Pro 3 <span class="cmp-vs">vs</span> Sony WF-1000XM5</div><span class="cmp-sc">4.4&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-nothingear2-vs-ankerliberty4nc.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Nothing Ear 2 <span class="cmp-vs">vs</span> Anker Liberty 4 NC</div><span class="cmp-sc">4.3&#9733; vs 4.3&#9733;</span></a>
-      <a href="/compare-sennheisermomentum4-vs-boseqcearbuds2.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Sennheiser MOMENTUM TW4 <span class="cmp-vs">vs</span> Bose QC Earbuds II</div><span class="cmp-sc">4.5&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-sonywh1000xm5-vs-boseqc45.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Sony WH-1000XM5 <span class="cmp-vs">vs</span> Bose QC45</div><span class="cmp-sc">4.8&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-technicseahaz80-vs-boseqcearbuds2.html" class="cmp-card"><span class="cmp-emo">🎧</span><div class="cmp-names">Technics EAH-AZ80 <span class="cmp-vs">vs</span> Bose QC Earbuds II</div><span class="cmp-sc">4.6&#9733; vs 4.6&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">⌚ スマートウォッチ</div>
-    <div class="cmp-grid">
-      <a href="/compare-applewatchs10-vs-galaxywatch7.html" class="cmp-card"><span class="cmp-emo">⌚</span><div class="cmp-names">Apple Watch S10 <span class="cmp-vs">vs</span> Galaxy Watch 7</div><span class="cmp-sc">4.8&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-applewatchultra2-vs-garminfenix8.html" class="cmp-card"><span class="cmp-emo">⌚</span><div class="cmp-names">Apple Watch Ultra 2 <span class="cmp-vs">vs</span> Garmin Fenix 8</div><span class="cmp-sc">4.9&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-pixelwatch3-vs-galaxywatch7.html" class="cmp-card"><span class="cmp-emo">⌚</span><div class="cmp-names">Pixel Watch 3 <span class="cmp-vs">vs</span> Galaxy Watch 7</div><span class="cmp-sc">4.5&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-garminfenix8-vs-garminvenu3.html" class="cmp-card"><span class="cmp-emo">⌚</span><div class="cmp-names">Garmin Fenix 8 <span class="cmp-vs">vs</span> Garmin Venu 3</div><span class="cmp-sc">4.7&#9733; vs 4.5&#9733;</span></a>
-      <a href="/compare-applewatchs10-vs-applewatchultra2.html" class="cmp-card"><span class="cmp-emo">⌚</span><div class="cmp-names">Apple Watch S10 <span class="cmp-vs">vs</span> Apple Watch Ultra 2</div><span class="cmp-sc">4.8&#9733; vs 4.9&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">📟 タブレット</div>
-    <div class="cmp-grid">
-      <a href="/compare-ipadprom4-vs-galaxytabs10ultra.html" class="cmp-card"><span class="cmp-emo">📟</span><div class="cmp-names">iPad Pro M4 <span class="cmp-vs">vs</span> Galaxy Tab S10 Ultra</div><span class="cmp-sc">4.9&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-ipadairm2-vs-ipadprom4.html" class="cmp-card"><span class="cmp-emo">📟</span><div class="cmp-names">iPad Air M2 <span class="cmp-vs">vs</span> iPad Pro M4</div><span class="cmp-sc">4.5&#9733; vs 4.9&#9733;</span></a>
-      <a href="/compare-ipadmini7-vs-kindlepaperwhite.html" class="cmp-card"><span class="cmp-emo">📟</span><div class="cmp-names">iPad mini 7 <span class="cmp-vs">vs</span> Kindle Paperwhite</div><span class="cmp-sc">4.4&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-surfacepro11-vs-ipadprom4.html" class="cmp-card"><span class="cmp-emo">📟</span><div class="cmp-names">Surface Pro 11 <span class="cmp-vs">vs</span> iPad Pro M4</div><span class="cmp-sc">4.5&#9733; vs 4.9&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">💻 ノートPC</div>
-    <div class="cmp-grid">
-      <a href="/compare-macbookairm3-vs-macbookprom4pro.html" class="cmp-card"><span class="cmp-emo">💻</span><div class="cmp-names">MacBook Air M3 <span class="cmp-vs">vs</span> MacBook Pro M4 Pro</div><span class="cmp-sc">4.8&#9733; vs 4.9&#9733;</span></a>
-      <a href="/compare-macbookairm3-vs-dellxps15.html" class="cmp-card"><span class="cmp-emo">💻</span><div class="cmp-names">MacBook Air M3 <span class="cmp-vs">vs</span> Dell XPS 15</div><span class="cmp-sc">4.8&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-macbookairm3-vs-surfacepro11.html" class="cmp-card"><span class="cmp-emo">💻</span><div class="cmp-names">MacBook Air M3 <span class="cmp-vs">vs</span> Surface Pro 11</div><span class="cmp-sc">4.8&#9733; vs 4.5&#9733;</span></a>
-      <a href="/compare-asusrogzephyrusg14-vs-razerblade15.html" class="cmp-card"><span class="cmp-emo">💻</span><div class="cmp-names">ROG Zephyrus G14 <span class="cmp-vs">vs</span> Razer Blade 15</div><span class="cmp-sc">4.5&#9733; vs 4.5&#9733;</span></a>
-      <a href="/compare-thinkpadx1carbon-vs-dellxps15.html" class="cmp-card"><span class="cmp-emo">💻</span><div class="cmp-names">ThinkPad X1 Carbon <span class="cmp-vs">vs</span> Dell XPS 15</div><span class="cmp-sc">4.7&#9733; vs 4.6&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">🎮 ゲーム機</div>
-    <div class="cmp-grid">
-      <a href="/compare-nintendoswitch2-vs-ps5slim.html" class="cmp-card"><span class="cmp-emo">🎮</span><div class="cmp-names">Nintendo Switch 2 <span class="cmp-vs">vs</span> PS5 Slim</div><span class="cmp-sc">4.8&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-ps5slim-vs-xboxseriesx.html" class="cmp-card"><span class="cmp-emo">🎮</span><div class="cmp-names">PS5 Slim <span class="cmp-vs">vs</span> Xbox Series X</div><span class="cmp-sc">4.7&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-nintendoswitch2-vs-xboxseriesx.html" class="cmp-card"><span class="cmp-emo">🎮</span><div class="cmp-names">Nintendo Switch 2 <span class="cmp-vs">vs</span> Xbox Series X</div><span class="cmp-sc">4.8&#9733; vs 4.6&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">🖥️ モニター</div>
-    <div class="cmp-grid">
-      <a href="/compare-lg27gp850b-vs-asusrogswiftpg279qm.html" class="cmp-card"><span class="cmp-emo">🖥️</span><div class="cmp-names">LG 27GP850B <span class="cmp-vs">vs</span> ASUS ROG Swift PG279QM</div><span class="cmp-sc">4.6&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-dellu2723d-vs-benqpd3205u.html" class="cmp-card"><span class="cmp-emo">🖥️</span><div class="cmp-names">Dell U2723D <span class="cmp-vs">vs</span> BenQ PD3205U</div><span class="cmp-sc">4.7&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-samsungodysseyg7-vs-lg27gp850b.html" class="cmp-card"><span class="cmp-emo">🖥️</span><div class="cmp-names">Samsung Odyssey G7 <span class="cmp-vs">vs</span> LG 27GP850B</div><span class="cmp-sc">4.6&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-lg45gr95qeb-vs-samsungodysseyg7.html" class="cmp-card"><span class="cmp-emo">🖥️</span><div class="cmp-names">LG 45GR95QEB <span class="cmp-vs">vs</span> Samsung Odyssey G7</div><span class="cmp-sc">4.5&#9733; vs 4.6&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">📷 カメラ</div>
-    <div class="cmp-grid">
-      <a href="/compare-goprohero12-vs-djiosmoaction4.html" class="cmp-card"><span class="cmp-emo">📷</span><div class="cmp-names">GoPro HERO12 <span class="cmp-vs">vs</span> DJI Osmo Action 4</div><span class="cmp-sc">4.5&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-sonyzve10ii-vs-canoneosr50.html" class="cmp-card"><span class="cmp-emo">📷</span><div class="cmp-names">Sony ZV-E10 II <span class="cmp-vs">vs</span> Canon EOS R50</div><span class="cmp-sc">4.8&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-fujifilmxt5-vs-sonya7cii.html" class="cmp-card"><span class="cmp-emo">📷</span><div class="cmp-names">Fujifilm X-T5 <span class="cmp-vs">vs</span> Sony a7C II</div><span class="cmp-sc">4.7&#9733; vs 4.8&#9733;</span></a>
-      <a href="/compare-insta360x4-vs-goprohero12.html" class="cmp-card"><span class="cmp-emo">📷</span><div class="cmp-names">Insta360 X4 <span class="cmp-vs">vs</span> GoPro HERO12</div><span class="cmp-sc">4.5&#9733; vs 4.5&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">🤖 ロボット掃除機</div>
-    <div class="cmp-grid">
-      <a href="/compare-roborocks8maxv-vs-dreameX40ultra.html" class="cmp-card"><span class="cmp-emo">🤖</span><div class="cmp-names">Roborock S8 MaxV Ultra <span class="cmp-vs">vs</span> Dreame X40 Ultra</div><span class="cmp-sc">4.9&#9733; vs 4.7&#9733;</span></a>
-      <a href="/compare-dreameX40ultra-vs-ecovacsX5pro.html" class="cmp-card"><span class="cmp-emo">🤖</span><div class="cmp-names">Dreame X40 Ultra <span class="cmp-vs">vs</span> Ecovacs X5 Pro</div><span class="cmp-sc">4.7&#9733; vs 4.6&#9733;</span></a>
-      <a href="/compare-iroombaj9plus-vs-eufyrobovacx8.html" class="cmp-card"><span class="cmp-emo">🤖</span><div class="cmp-names">iRobot Roomba j9+ <span class="cmp-vs">vs</span> Eufy RoboVac X8</div><span class="cmp-sc">4.7&#9733; vs 4.4&#9733;</span></a>
-    </div>
-    <div class="cmp-cat">🔊 スピーカー</div>
-    <div class="cmp-grid">
-      <a href="/compare-boseSoundLinkMax-vs-marshallEmberton3.html" class="cmp-card"><span class="cmp-emo">🔊</span><div class="cmp-names">Bose SoundLink Max <span class="cmp-vs">vs</span> Marshall Emberton III</div><span class="cmp-sc">4.7&#9733; vs 4.5&#9733;</span></a>
-      <a href="/compare-jblflip6-vs-boseSoundLinkMax.html" class="cmp-card"><span class="cmp-emo">🔊</span><div class="cmp-names">JBL Flip 6 <span class="cmp-vs">vs</span> Bose SoundLink Max</div><span class="cmp-sc">4.5&#9733; vs 4.7&#9733;</span></a>
+      <a href="/compare-applewatchs10-vs-applewatchultra2.html" class="cmp-card">
+        <div class="cmp-emoji">⌚</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">スマートウォッチ</div>
+          <div class="cmp-name">Apple Watch Series 10 <span style="color:var(--primary)">vs</span> Apple Watch Ultra 2</div>
+        </div>
+      </a>
+      <a href="/compare-applewatchs10-vs-galaxywatch7.html" class="cmp-card">
+        <div class="cmp-emoji">⌚</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">スマートウォッチ</div>
+          <div class="cmp-name">Apple Watch Series 10 <span style="color:var(--primary)">vs</span> Galaxy Watch 7</div>
+        </div>
+      </a>
+      <a href="/compare-asusrogzephyrusg14-vs-razerblade15.html" class="cmp-card">
+        <div class="cmp-emoji">💻</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">ノートPC</div>
+          <div class="cmp-name">ASUS ROG Zephyrus G14 <span style="color:var(--primary)">vs</span> Razer Blade 15</div>
+        </div>
+      </a>
+      <a href="/compare-macbookairm3-vs-dellxps15.html" class="cmp-card">
+        <div class="cmp-emoji">💻</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">ノートPC</div>
+          <div class="cmp-name">MacBook Air M3 <span style="color:var(--primary)">vs</span> Dell XPS 15</div>
+        </div>
+      </a>
+      <a href="/compare-boseSoundLinkMax-vs-marshallEmberton3.html" class="cmp-card">
+        <div class="cmp-emoji">🔊</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">スピーカー</div>
+          <div class="cmp-name">Bose SoundLink Max <span style="color:var(--primary)">vs</span> Marshall Emberton III</div>
+        </div>
+      </a>
+      <a href="/compare-jblflip6-vs-boseSoundLinkMax.html" class="cmp-card">
+        <div class="cmp-emoji">🔊</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">スピーカー</div>
+          <div class="cmp-name">JBL Flip 6 <span style="color:var(--primary)">vs</span> Bose SoundLink Max</div>
+        </div>
+      </a>
+      <a href="/compare-dellu2723d-vs-benqpd3205u.html" class="cmp-card">
+        <div class="cmp-emoji">🖥️</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">モニター</div>
+          <div class="cmp-name">Dell U2723D <span style="color:var(--primary)">vs</span> BenQ PD3205U</div>
+        </div>
+      </a>
+      <a href="/compare-lg27gp850b-vs-asusrogswiftpg279qm.html" class="cmp-card">
+        <div class="cmp-emoji">🖥️</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">モニター</div>
+          <div class="cmp-name">LG 27GP850B <span style="color:var(--primary)">vs</span> ASUS ROG Swift PG279QM</div>
+        </div>
+      </a>
+      <a href="/compare-dreameX40ultra-vs-ecovacsX5pro.html" class="cmp-card">
+        <div class="cmp-emoji">🤖</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">ロボット掃除機</div>
+          <div class="cmp-name">Dreame X40 Ultra <span style="color:var(--primary)">vs</span> Ecovacs X5 Pro</div>
+        </div>
+      </a>
+      <a href="/compare-iroombaj9plus-vs-eufyrobovacx8.html" class="cmp-card">
+        <div class="cmp-emoji">🤖</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">ロボット掃除機</div>
+          <div class="cmp-name">iRobot Roomba J9+ <span style="color:var(--primary)">vs</span> Eufy RoboVac X8</div>
+        </div>
+      </a>
+      <a href="/compare-fujifilmxt5-vs-sonya7cii.html" class="cmp-card">
+        <div class="cmp-emoji">📷</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">カメラ</div>
+          <div class="cmp-name">Fujifilm X-T5 <span style="color:var(--primary)">vs</span> Sony α7C II</div>
+        </div>
+      </a>
+      <a href="/compare-sonyzve10ii-vs-canoneosr50.html" class="cmp-card">
+        <div class="cmp-emoji">📷</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">カメラ</div>
+          <div class="cmp-name">Sony ZV-E10 II <span style="color:var(--primary)">vs</span> Canon EOS R50</div>
+        </div>
+      </a>
+      <a href="/compare-galaxya55-vs-nothingphone3a.html" class="cmp-card">
+        <div class="cmp-emoji">📱</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">スマートフォン</div>
+          <div class="cmp-name">Galaxy A55 <span style="color:var(--primary)">vs</span> Nothing Phone 3a</div>
+        </div>
+      </a>
+      <a href="/compare-galaxys25ultra-vs-xiaomi14ultra.html" class="cmp-card">
+        <div class="cmp-emoji">📱</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">スマートフォン</div>
+          <div class="cmp-name">Galaxy S25 Ultra <span style="color:var(--primary)">vs</span> Xiaomi 14 Ultra</div>
+        </div>
+      </a>
+      <a href="/compare-galaxybuds3pro-vs-sonywf1000xm5.html" class="cmp-card">
+        <div class="cmp-emoji">🎧</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">イヤホン</div>
+          <div class="cmp-name">Galaxy Buds 3 Pro <span style="color:var(--primary)">vs</span> Sony WF-1000XM5</div>
+        </div>
+      </a>
+      <a href="/compare-jbltourpro3-vs-sonywf1000xm5.html" class="cmp-card">
+        <div class="cmp-emoji">🎧</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">イヤホン</div>
+          <div class="cmp-name">JBL Tour Pro 3 <span style="color:var(--primary)">vs</span> Sony WF-1000XM5</div>
+        </div>
+      </a>
+      <a href="/compare-goprohero12-vs-djiosmoaction4.html" class="cmp-card">
+        <div class="cmp-emoji">📹</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">アクションカム</div>
+          <div class="cmp-name">GoPro HERO12 Black <span style="color:var(--primary)">vs</span> DJI Osmo Action 4</div>
+        </div>
+      </a>
+      <a href="/compare-insta360x4-vs-goprohero12.html" class="cmp-card">
+        <div class="cmp-emoji">📹</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">アクションカム</div>
+          <div class="cmp-name">Insta360 X4 <span style="color:var(--primary)">vs</span> GoPro HERO12 Black</div>
+        </div>
+      </a>
+      <a href="/compare-ipadairm2-vs-ipadprom4.html" class="cmp-card">
+        <div class="cmp-emoji">📟</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">タブレット</div>
+          <div class="cmp-name">iPad Air M2 <span style="color:var(--primary)">vs</span> iPad Pro M4</div>
+        </div>
+      </a>
+      <a href="/compare-ipadmini7-vs-kindlepaperwhite.html" class="cmp-card">
+        <div class="cmp-emoji">📟</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">タブレット</div>
+          <div class="cmp-name">iPad Mini 7 <span style="color:var(--primary)">vs</span> Kindle Paperwhite</div>
+        </div>
+      </a>
+      <a href="/compare-nintendoswitch2-vs-ps5slim.html" class="cmp-card">
+        <div class="cmp-emoji">🎮</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">ゲーム機</div>
+          <div class="cmp-name">Nintendo Switch 2 <span style="color:var(--primary)">vs</span> PS5 Slim</div>
+        </div>
+      </a>
+      <a href="/compare-nintendoswitch2-vs-xboxseriesx.html" class="cmp-card">
+        <div class="cmp-emoji">🎮</div>
+        <div class="cmp-info">
+          <div class="cmp-cat">ゲーム機</div>
+          <div class="cmp-name">Nintendo Switch 2 <span style="color:var(--primary)">vs</span> Xbox Series X</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
-
-<!-- Features -->
 <section class="section" id="features">
   <div class="container">
     <div class="section-header">
